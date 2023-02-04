@@ -6,9 +6,9 @@ from . import __version__
 def pre_commit() -> None:
     print(  # noqa: T201
         f"""repos:
-- hooks:
-  repo: https://github.com/rcmdnk/pyproject-pre-commit
+- repo: https://github.com/rcmdnk/pyproject-pre-commit
   rev: v{__version__}
+  hooks:
   - id: black-diff
   - id: black
   - id: blacken-docs

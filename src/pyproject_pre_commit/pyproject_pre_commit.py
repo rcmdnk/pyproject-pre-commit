@@ -64,6 +64,8 @@ strict = true
 warn_return_any = false
 ignore-missing-imports = true
 scripts_are_modules = true
+install_types = true
+non_interactive = true
 """
     )
 

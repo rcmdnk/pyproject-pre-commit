@@ -2,7 +2,7 @@ from pathlib import Path
 
 import tomli
 
-from python_template import __version__
+from pyproject_pre_commit import __version__
 
 
 def test_version():

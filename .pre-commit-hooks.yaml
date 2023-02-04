@@ -1,0 +1,156 @@
+- id: black-diff
+  # https://github.com/psf/black
+  name: black-diff
+  description: Just show the diff of black result.
+  entry: black
+  language: system
+  types_or:
+  - python
+  - pyi
+  require_serial: true
+  args:
+  - "--diff"
+  - "--color"
+  verbose: true
+- id: black
+  # https://github.com/psf/black
+  name: black
+  description: "Black: The uncompromising Python code formatter."
+  entry: black
+  language: system
+  types_or:
+  - python
+  - pyi
+  require_serial: true
+- id: blacken-docs
+  # https://github.com/asottile/blacken-docs
+  name: blacken-docs
+  description: Run `black` on python code blocks in documentation files.
+  entry: blacken-docs
+  language: system
+  files: '\.(rst|md|markdown|py|tex)$'
+- id: autoflake-diff
+  # https://github.com/PyCQA/autoflake
+  name: autoflake-diff
+  description: Just show the diff of autoflake result.
+  entry: autoflake
+  language: system
+  types:
+  - python
+  require_serial: true
+  verbose: true
+- id: autoflake
+  # https://github.com/PyCQA/autoflake
+  name: autoflake
+  description: autoflake removes unused imports and unused variables from Python code
+  entry: autoflake
+  language: system
+  types:
+  - python
+  require_serial: true
+  args:
+    - "--in-place"
+- id: autopep8-diff
+  # https://github.com/pre-commit/mirrors-autopep8
+  name: autopep8-diff
+  description: Just show the diff of autopep8 result.
+  entry: autopep8
+  language: system
+  types:
+  - python
+  args:
+  - "--diff"
+  verbose: true
+- id: autopep8
+  # https://github.com/pre-commit/mirrors-autopep8
+  name: autopep8
+  description: autopep8 automatically formats Python code to conform to the PEP 8 style guide.
+  entry: autopep8
+  language: system
+  types:
+  - python
+  args:
+  - "--in-place"
+- id: isort-diff
+  # https://github.com/PyCQA/isort
+  name: isort-diff
+  description: Just show the diff of isort result.
+  entry: isort
+  language: system
+  require_serial: true
+  types_or:
+  - cython
+  - pyi
+  - python
+  args:
+  - '--diff'
+  - '--filter-files'
+  verbose: true
+- id: isort
+  # https://github.com/PyCQA/isort
+  name: isort
+  description: isort your imports, so you don't have to.
+  entry: isort
+  language: system
+  require_serial: true
+  types_or:
+  - cython
+  - pyi
+  - python
+  args:
+  - '--filter-files'
+- id: flake8
+  # https://github.com/PyCQA/flake8
+  name: flake8
+  description: "`flake8` is a command-line utility for enforcing style consistency across Python projects."
+  entry: flake8
+  language: system
+  types:
+  - python
+  require_serial: true
+- id: bandit
+  # https://github.com/PyCQA/bandit
+  name: bandit
+  description: Bandit is a tool for finding common security issues in Python code
+  entry: bandit
+  language: system
+  types:
+  - python
+  args:
+  - "-c"
+  - "pyproject.toml"
+- id: mypy
+  # https://github.com/pre-commit/mirrors-mypy
+  name: mypy
+  entry: mypy
+  description: Mypy is a static type checker for Python.
+  language: system
+  types_or:
+  - python
+  - pyi
+  require_serial: true
+  pass_filenames: false
+- id: shellcheck
+  # https://github.com/shellcheck-py/shellcheck-py
+  name: shellcheck
+  entry: shellcheck
+  description: Test shell scripts with shellcheck.
+  language: system
+  types: [shell]
+  require_serial: true
+- id: mdformat-check
+  # https://github.com/executablebooks/mdformat
+  name: mdformat-check
+  description: Just show the diff of mdformat result.
+  entry: mdformat
+  language: system
+  types: [markdown]
+  args:
+  - "--check"
+- id: mdformat
+  # https://github.com/executablebooks/mdformat
+  name: mdformat
+  description: CommonMark compliant Markdown formatter
+  entry: mdformat
+  language: system
+  types: [markdown]

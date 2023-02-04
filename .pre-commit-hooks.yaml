@@ -5,12 +5,12 @@
   entry: black
   language: system
   types_or:
-  - python
-  - pyi
+    - python
+    - pyi
   require_serial: true
   args:
-  - "--diff"
-  - "--color"
+    - "--diff"
+    - "--color"
   verbose: true
 - id: black
   # https://github.com/psf/black
@@ -19,8 +19,8 @@
   entry: black
   language: system
   types_or:
-  - python
-  - pyi
+    - python
+    - pyi
   require_serial: true
 - id: blacken-docs
   # https://github.com/asottile/blacken-docs
@@ -36,7 +36,7 @@
   entry: autoflake
   language: system
   types:
-  - python
+    - python
   require_serial: true
   verbose: true
 - id: autoflake
@@ -46,7 +46,7 @@
   entry: autoflake
   language: system
   types:
-  - python
+    - python
   require_serial: true
   args:
     - "--in-place"
@@ -57,7 +57,7 @@
   entry: autopep8
   language: system
   types:
-  - python
+    - python
   args:
   - "--diff"
   verbose: true
@@ -68,7 +68,7 @@
   entry: autopep8
   language: system
   types:
-  - python
+    - python
   args:
   - "--in-place"
 - id: isort-diff
@@ -79,12 +79,12 @@
   language: system
   require_serial: true
   types_or:
-  - cython
-  - pyi
-  - python
+    - cython
+    - pyi
+    - python
   args:
-  - '--diff'
-  - '--filter-files'
+    - '--diff'
+    - '--filter-files'
   verbose: true
 - id: isort
   # https://github.com/PyCQA/isort
@@ -94,9 +94,9 @@
   language: system
   require_serial: true
   types_or:
-  - cython
-  - pyi
-  - python
+    - cython
+    - pyi
+    - python
   args:
   - '--filter-files'
 - id: flake8
@@ -106,7 +106,7 @@
   entry: flake8
   language: system
   types:
-  - python
+    - python
   require_serial: true
 - id: bandit
   # https://github.com/PyCQA/bandit
@@ -115,7 +115,7 @@
   entry: bandit
   language: system
   types:
-  - python
+    - python
   args:
   - "-c"
   - "pyproject.toml"
@@ -126,8 +126,8 @@
   description: Mypy is a static type checker for Python.
   language: system
   types_or:
-  - python
-  - pyi
+    - python
+    - pyi
   require_serial: true
   pass_filenames: false
 - id: shellcheck
@@ -146,7 +146,7 @@
   language: system
   types: [markdown]
   args:
-  - "--check"
+    - "--check"
 - id: mdformat
   # https://github.com/executablebooks/mdformat
   name: mdformat

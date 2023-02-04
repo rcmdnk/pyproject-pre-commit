@@ -6,24 +6,24 @@ from . import __version__
 def pre_commit() -> None:
     print(  # noqa: T201
         f"""repos:
-- repo: https://github.com/rcmdnk/pyproject-pre-commit
-  rev: v{__version__}
-  hooks:
-  - id: black-diff
-  - id: black
-  - id: blacken-docs
-  - id: autoflake-diff
-  - id: autoflake
-  - id: autopep8-diff
-  - id: autopep8
-  - id: isort-diff
-  - id: isort
-  - id: flake8
-  - id: bandit
-  - id: mypy
-  - id: shellcheck
-  - id: mdformat-check
-  - id: mdformat
+  - repo: https://github.com/rcmdnk/pyproject-pre-commit
+    rev: v{__version__}
+    hooks:
+      - id: black-diff
+      - id: black
+      - id: blacken-docs
+      - id: autoflake-diff
+      - id: autoflake
+      - id: autopep8-diff
+      - id: autopep8
+      - id: isort-diff
+      - id: isort
+      - id: flake8
+      - id: bandit
+      - id: mypy
+      - id: shellcheck
+      - id: mdformat-check
+      - id: mdformat
 """
     )
 

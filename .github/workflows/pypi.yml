@@ -22,7 +22,6 @@ jobs:
         with:
           ref: main
       - name: Compare to the last tag
-        continue-on-error: true
         id: last_tag
         run: |
           last_tag=$(git tag --sort=version:refname | tail -n1)
@@ -36,14 +35,12 @@ jobs:
             sed -i "" "s/^__version__.*$/__version__ = \"{new_tag#v}\""  src/pyproject_pre_commit/__init__.py
           fi
       - name: Commit and push
-        if: steps.last_tag.outcome == 'success'
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add .
           PRE_COMMIT_ALLOW_NO_CONFIG=1 git commit -m "update tag"
       - name: Push
-        if: steps.last_tag.outcome == 'success'
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ inputs.github_token }}

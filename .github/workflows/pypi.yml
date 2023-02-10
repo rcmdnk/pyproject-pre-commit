@@ -10,10 +10,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    permissions:
-      contents: write
+  check:
     runs-on: ubuntu-latest
+    outputs:
+      last_tag: ${{ steps.last_tag.outputs.last_tag }}
     steps:
       - uses: actions/setup-python@v4
         with:
@@ -26,14 +26,31 @@ jobs:
         run: |
           last_tag=$(git tag --sort=version:refname | tail -n1)
           if [ -z "$(git diff $last_tag)" ];then
-            exit 1
+            echo "last_tag=''" | tee -a $GITHUB_OUTPUT
           else
+            echo "last_tag=$last_tag" | tee -a $GITHUB_OUTPUT
+          fi
             minor=${last_tag##*.}
             ((++minor))
             new_tag=${last_tag%.*}.${minor}
             sed -i "" "s/^version.*$/version = \"${new_tag#v}\"" pyproject.toml
             sed -i "" "s/^__version__.*$/__version__ = \"{new_tag#v}\""  src/pyproject_pre_commit/__init__.py
           fi
+  publish:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    if: ${{ needs.check.outputs.last_tag != '' }}
+    needs: check
+    steps:
+      - name: Update tag
+        run: |
+          last_tag=${{ needs.check.outputs.last_tag }}
+          minor=${last_tag##*.}
+          ((++minor))
+          new_tag=${last_tag%.*}.${minor}
+          sed -i "" "s/^version.*$/version = \"${new_tag#v}\"" pyproject.toml
+          sed -i "" "s/^__version__.*$/__version__ = \"{new_tag#v}\""  src/pyproject_pre_commit/__init__.py
       - name: Commit and push
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"

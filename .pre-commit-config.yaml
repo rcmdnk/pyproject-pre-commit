@@ -1,41 +1,6 @@
 repos:
   - repo: local
     hooks:
-      - id: black-diff
-        name: black-diff
-        entry: black
-        language: system
-        types_or:
-          - python
-          - pyi
-        require_serial: true
-        args:
-          - "--diff"
-          - "--color"
-        verbose: true
-      - id: black
-        # https://github.com/psf/black
-        name: black
-        entry: black
-        language: system
-        types_or:
-          - python
-          - pyi
-        require_serial: true
-      - id: blacken-docs
-        # https://github.com/asottile/blacken-docs
-        name: blacken-docs
-        entry: blacken-docs
-        language: system
-        files: '\.(rst|md|markdown|py|tex)$'
-      - id: autoflake-diff
-        name: autoflake-diff
-        entry: autoflake
-        language: system
-        types:
-          - python
-        require_serial: true
-        verbose: true
       - id: autoflake
         # https://github.com/PyCQA/autoflake
         name: autoflake
@@ -97,16 +62,6 @@ repos:
         types:
           - python
         require_serial: true
-      - id: bandit
-        # https://github.com/PyCQA/bandit
-        name: bandit
-        entry: bandit
-        language: system
-        types:
-          - python
-        args:
-          - "-c"
-          - "pyproject.toml"
       - id: mypy
         # https://github.com/pre-commit/mirrors-mypy
         name: mypy

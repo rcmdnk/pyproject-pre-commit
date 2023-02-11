@@ -15,9 +15,6 @@ jobs:
     outputs:
       last_tag: ${{ steps.last_tag.outputs.last_tag }}
     steps:
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
       - uses: actions/checkout@v3
         with:
           ref: main
@@ -29,12 +26,6 @@ jobs:
             echo "last_tag=''" | tee -a $GITHUB_OUTPUT
           else
             echo "last_tag=$last_tag" | tee -a $GITHUB_OUTPUT
-          fi
-            minor=${last_tag##*.}
-            ((++minor))
-            new_tag=${last_tag%.*}.${minor}
-            sed -i "" "s/^version.*$/version = \"${new_tag#v}\"" pyproject.toml
-            sed -i "" "s/^__version__.*$/__version__ = \"{new_tag#v}\""  src/pyproject_pre_commit/__init__.py
           fi
   publish:
     permissions:
@@ -49,8 +40,8 @@ jobs:
           minor=${last_tag##*.}
           ((++minor))
           new_tag=${last_tag%.*}.${minor}
-          sed -i "" "s/^version.*$/version = \"${new_tag#v}\"" pyproject.toml
-          sed -i "" "s/^__version__.*$/__version__ = \"{new_tag#v}\""  src/pyproject_pre_commit/__init__.py
+          sed -i"" "s/^version.*$/version = \"${new_tag#v}\"" pyproject.toml
+          sed -i"" "s/^__version__.*$/__version__ = \"{new_tag#v}\""  src/pyproject_pre_commit/__init__.py
       - name: Commit and push
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -62,6 +53,9 @@ jobs:
         with:
           github_token: ${{ inputs.github_token }}
           branch: main
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
       - name: Publish to PyPI
         run: |
           pip install poetry

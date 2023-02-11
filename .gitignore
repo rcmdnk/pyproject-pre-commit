@@ -163,10 +163,5 @@ cython_debug/
 
 # Others
 .DS_Store
-#data/
-#ouputs/
-#log/
-#tmp/
-#test_*/
-#tests_*/
-#work/
+/*.txt
+/*.py

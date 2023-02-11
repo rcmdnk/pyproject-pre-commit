@@ -22,7 +22,7 @@ jobs:
         id: last_tag
         run: |
           last_tag=$(git tag --sort=version:refname | tail -n1)
-          if [ -z "$(git diff $last_tag)" ];then
+          if [ -z "$(git diff $last_tag src pyproject.toml)" ];then
             echo "last_tag=''" | tee -a $GITHUB_OUTPUT
           else
             echo "last_tag=$last_tag" | tee -a $GITHUB_OUTPUT

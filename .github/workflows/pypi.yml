@@ -40,8 +40,9 @@ jobs:
           minor=${last_tag##*.}
           ((++minor))
           new_tag=${last_tag%.*}.${minor}
-          sed -i"" "s/^version.*$/version = \"${new_tag#v}\"" pyproject.toml
-          sed -i"" "s/^__version__.*$/__version__ = \"{new_tag#v}\""  src/pyproject_pre_commit/__init__.py
+          new_tag=${new_tag#v}
+          sed -i"" "s/^version.*$/version = \"${new_tag}\"/" pyproject.toml
+          sed -i"" "s/^__version__.*$/__version__ = \"${new_tag}\"/"  src/pyproject_pre_commit/__init__.py
       - name: Commit and push
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"

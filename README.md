@@ -1,11 +1,11 @@
-commit: [cbe8f6ea8a6b476d9e0dd60fbd9df21dd61977fb](https://github.com/rcmdnk/pyproject-pre-commit/tree/cbe8f6ea8a6b476d9e0dd60fbd9df21dd61977fb)
+commit: [b17ae676013fb65648d5b23a5ad699d0ef030cd9](https://github.com/rcmdnk/pyproject-pre-commit/tree/b17ae676013fb65648d5b23a5ad699d0ef030cd9)
 
 condition: branch=main, os=ubuntu-latest, python_version=3.10
 
-[![dispatch](https://github.com/rcmdnk/pyproject-pre-commit/actions/workflows/dispatch.yml/badge.svg)](https://github.com/rcmdnk/pyproject-pre-commit/actions/runs/4169741692)
+[![dispatch](https://github.com/rcmdnk/pyproject-pre-commit/actions/workflows/dispatch.yml/badge.svg)](https://github.com/rcmdnk/pyproject-pre-commit/actions/runs/4169752387)
 <a href="https://github.com/rcmdnk/pyproject-pre-commit/blob/undefined/README.md"><img alt="Coverage" src="https://img.shields.io/badge/Coverage-95%25-brightgreen.svg" /></a><details><summary>Coverage Report </summary><table><tr><th>File</th><th>Stmts</th><th>Miss</th><th>Cover</th><th>Missing</th></tr><tbody><tr><td colspan="5"><b>src/pyproject_pre_commit</b></td></tr><tr><td>&nbsp; &nbsp;<a href="https://github.com/rcmdnk/pyproject-pre-commit/blob/undefined/src/pyproject_pre_commit/pyproject_pre_commit.py">pyproject_pre_commit.py</a></td><td>18</td><td>1</td><td>94%</td><td><a href="https://github.com/rcmdnk/pyproject-pre-commit/blob/undefined/src/pyproject_pre_commit/pyproject_pre_commit.py#L91">91</a></td></tr><tr><td><b>TOTAL</b></td><td><b>22</b></td><td><b>1</b></td><td><b>95%</b></td><td>&nbsp;</td></tr></tbody></table></details>
 
 | Tests | Skipped | Failures | Errors | Time |
 | ----- | ------- | -------- | -------- | ------------------ |
-| 5 | 0 :zzz: | 0 :x: | 0 :fire: | 0.539s :stopwatch: |
+| 5 | 0 :zzz: | 0 :x: | 0 :fire: | 0.543s :stopwatch: |
 

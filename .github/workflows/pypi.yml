@@ -4,6 +4,7 @@ name: publish
 on:
   schedule:
       - cron:  '0 0 * * *'
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -27,6 +28,9 @@ jobs:
           else
             echo "last_tag=$last_tag" | tee -a $GITHUB_OUTPUT
           fi
+      - name: check last_tag
+        run: |
+          echo ${{ steps.last_tag.outputs.last_tag }}
   publish:
     permissions:
       contents: write
@@ -36,6 +40,8 @@ jobs:
     steps:
       - name: Update tag
         run: |
+          ls
+          echo ${{ needs.check.outputs.last_tag }}
           last_tag=${{ needs.check.outputs.last_tag }}
           minor=${last_tag##*.}
           ((++minor))

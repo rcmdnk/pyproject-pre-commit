@@ -9,7 +9,7 @@ pre-commit hooks for python projects using pyproject.toml.
 
 ## Requirement
 
-- Python 3.11, 3.10, 3.9, 3.8, 3.7
+- Python 3.11, 3.10, 3.9, 3.8
 - Poetry (For development)
 
 ## Installation

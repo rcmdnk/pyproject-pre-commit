@@ -28,6 +28,8 @@ on:
           - "3.11"
           - "3.10"
           - "3.9"
+          - "3.8"
+          - "3.7"
       tmate:
         type: boolean
         description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate). This is only for main strategy and others will be stopped.'
@@ -52,7 +54,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python-version: ["3.11", "3.10", "3.9"]
+        python-version: ["3.11", "3.10", "3.9", "3.8", "3.7"]
     permissions:
       contents: write
     runs-on: ${{ matrix.os }}

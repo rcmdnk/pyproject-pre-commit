@@ -18,13 +18,19 @@ jobs:
     permissions:
       actions: write
     steps:
+      - run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]];then
+            echo "REF=${{ github.event.pull_request.head.sha }}"  >> $GITHUB_ENV
+          else
+            echo "REF=${{ github.ref }}" >> $GITHUB_ENV
+          fi
       - uses: convictional/trigger-workflow-and-wait@v1.6.5
         continue-on-error: true
         id: dispatch
         with:
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
-          ref: ${{ github.ref }}
+          ref: ${{ env.REF }}
           github_token: ${{ github.token }}
           workflow_file_name: dispatch.yml
           propagate_failure: true

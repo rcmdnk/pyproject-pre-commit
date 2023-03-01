@@ -38,7 +38,7 @@ on:
 env:
   main_branch: ${{ inputs.main_branch || 'main' }}
   main_os: ${{ inputs.main_os || 'ubuntu-latest' }}
-  MAIN_PY_VER: ${{ inputs.main_py_ver || '3.10' }}
+  main_py_ver: ${{ inputs.main_py_ver || '3.10' }}
   tmate: ${{ inputs.tmate || 'false' }}
 
 
@@ -61,7 +61,7 @@ jobs:
       - name: Check is main
         id: is_main
         run: |
-          if [ "${{ github.ref }}" = "refs/heads/${{ env.main_branch }}" ] && [ "${{ matrix.os }}" = "${{ env.main_os }}" ] && [ "${{ matrix.python-version }}" = "${{ env.MAIN_PY_VER }}" ];then
+          if [ "${{ github.ref }}" = "refs/heads/${{ env.main_branch }}" ] && [ "${{ matrix.os }}" = "${{ env.main_os }}" ] && [ "${{ matrix.python-version }}" = "${{ env.main_py_ver }}" ];then
             echo "is_main=1" >> $GITHUB_ENV
             is_main=1
           else
@@ -81,6 +81,6 @@ jobs:
         with:
           python-version: "${{ matrix.python-version }}"
           coverage-push: "${{ env.is_main }}"
-          coverage-push-condition: "branch=${{ env.main_branch }}, os=${{ env.main_os }}, python_version=${{ env.MAIN_PY_VER }}"
-          pre-commit: "${{ env.is_main }}"
+          coverage-push-condition: "branch=${{ env.main_branch }}, os=${{ env.main_os }}, python_version=${{ env.main_py_ver }}"
+          pre-commit: "1"
           tmate: "${{ env.debug }}"

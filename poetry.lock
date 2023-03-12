@@ -21,14 +21,14 @@ tests-no-zope = ["cloudpickle", "cloudpickle", "hypothesis", "hypothesis", "mypy
 
 [[package]]
 name = "autoflake"
-version = "2.0.1"
+version = "2.0.2"
 description = "Removes unused imports and unused variables"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "autoflake-2.0.1-py3-none-any.whl", hash = "sha256:143b0843667734af53532c443e950c787316b9b1155b2273558260b44836e8e4"},
-    {file = "autoflake-2.0.1.tar.gz", hash = "sha256:1ce520131b7f396915242fe91e57221f4d42408529bbe3ae93adafed286591e0"},
+    {file = "autoflake-2.0.2-py3-none-any.whl", hash = "sha256:a82d8efdcbbb7129a8a23238c529fb9d9919c562e26bb7963ea6890fbfff7d02"},
+    {file = "autoflake-2.0.2.tar.gz", hash = "sha256:e0164421ff13f805f08a023e249d84200bd00463d213b490906bfefa67e83830"},
 ]
 
 [package.dependencies]
@@ -1391,4 +1391,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<3.12"
-content-hash = "c7d8c8a226887088a7a20b6db1354dd24d400abffd7a12dab9ef198388be7a76"
+content-hash = "cc731649ba65719f8e0bd6bd084a3be5e419153688f1437914be27ecb6d9fef4"

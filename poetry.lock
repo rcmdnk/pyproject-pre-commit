@@ -470,13 +470,13 @@ pycodestyle = "*"
 
 [[package]]
 name = "flake8-pyproject"
-version = "1.2.2"
+version = "1.2.3"
 description = "Flake8 plug-in loading the configuration from pyproject.toml"
 category = "main"
 optional = false
 python-versions = ">= 3.6"
 files = [
-    {file = "flake8_pyproject-1.2.2-py3-none-any.whl", hash = "sha256:52d412219e7db6227faa654675b1435947b11d49b453f3eced760f19bdd6f06a"},
+    {file = "flake8_pyproject-1.2.3-py3-none-any.whl", hash = "sha256:6249fe53545205af5e76837644dc80b4c10037e73a0e5db87ff562d75fb5bd4a"},
 ]
 
 [package.dependencies]
@@ -1400,4 +1400,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<3.12"
-content-hash = "c920815990d4dedbd6f4eb813b02c1415ba31b3a32c0c24d182f7942c239e532"
+content-hash = "b80b0c82811a11a07239f2f8f3d10dbe1625e7785c602d849fe89a422080dfc7"

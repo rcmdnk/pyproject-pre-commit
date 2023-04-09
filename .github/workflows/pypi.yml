@@ -57,7 +57,7 @@ jobs:
         if: ${{ steps.check.outputs.flag == 1 && steps.update.outputs.flag == 1 }}
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ inputs.github_token }}
+          github_token: ${{ github.token }}
           branch: main
       - uses: actions/setup-python@v4
         if: ${{ steps.check.outputs.flag == 1 }}

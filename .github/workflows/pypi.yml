@@ -58,8 +58,8 @@ jobs:
       - name: Make new tag
         if: ${{ steps.check.outputs.flag == 1 && steps.update.outputs.flag == 1 }}
         run: |
-          comment=$(git log --pretty='%h - %s (%an)' ${{ steps.update.outputs.last_tagtag }}..HEAD|cut -d'-' -f2-)
-          git tag -a ${{ steps.update.outputs.last_tagtag }} -m "${comment}"
+          comment=$(git log --pretty='%h - %s (%an)' ${{ steps.update.outputs.last_tag }}..HEAD|cut -d'-' -f2-)
+          git tag -a ${{ steps.update.outputs.new_tag }} -m "${comment}"
           git push --tag
       - name: Push
         if: ${{ steps.check.outputs.flag == 1 && steps.update.outputs.flag == 1 }}

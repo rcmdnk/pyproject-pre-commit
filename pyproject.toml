@@ -40,7 +40,7 @@ pycodestyle = "2.10.0"
 autoflake = "2.0.2"
 autopep8 = "2.0.2"
 isort = "5.12.0"
-mypy = "0.991"
+mypy = "1.2.0"
 bandit = {extras = ["toml"], version = "1.7.5"}
 shellcheck-py = "0.9.0.2"
 mdformat = "0.7.16"

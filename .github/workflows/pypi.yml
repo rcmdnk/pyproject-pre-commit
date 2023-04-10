@@ -43,6 +43,8 @@ jobs:
           sed -i"" "s/^__version__.*$/__version__ = \"${new_tag}\"/"  src/pyproject_pre_commit/__init__.py
           if [ -n "$(git diff)" ];then
             echo "flag=1" >> $GITHUB_OUTPUT
+            echo "lat_tag=${last_tag}" >> $GITHUB_OUTPUT
+            echo "new_tag=${new_tag}" >> $GITHUB_OUTPUT
           else
             echo "flag=0"  >> $GITHUB_OUTPUT
           fi
@@ -53,12 +55,24 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add .
           PRE_COMMIT_ALLOW_NO_CONFIG=1 git commit -m "update tag"
+      - name: Make new tag
+        if: ${{ steps.check.outputs.flag == 1 && steps.update.outputs.flag == 1 }}
+        run: |
+          comment=$(git log --pretty='%h - %s (%an)' ${{ steps.update.outputs.last_tagtag }}..HEAD|cut -d'-' -f2-)
+          git tag -a ${{ steps.update.outputs.last_tagtag }} -m "${comment}"
+          git push --tag
       - name: Push
         if: ${{ steps.check.outputs.flag == 1 && steps.update.outputs.flag == 1 }}
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ github.token }}
           branch: main
+      - name: Push new tag
+        if: ${{ steps.check.outputs.flag == 1 && steps.update.outputs.flag == 1 }}
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ github.token }}
+          tags: true
       - uses: actions/setup-python@v4
         if: ${{ steps.check.outputs.flag == 1 }}
         with:

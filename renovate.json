@@ -4,6 +4,7 @@
     "config:base",
     ":timezone(Asia/Tokyo)"
   ],
+  "automerge": true,
   "schedule": ["before 3am on Monday"],
   "lockFileMaintenance": {
     "enabled": true,
@@ -14,11 +15,5 @@
   },
   "pre-commit": {
     "enabled": true
-  },
-  "packageRules": [
-    {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "automerge": true
-    }
-  ]
+  }
 }

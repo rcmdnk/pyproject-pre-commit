@@ -1,4 +1,4 @@
-__version__ = "0.0.20"
+__version__ = "0.0.21"
 __program__ = "pyproject-pre-commit"
 from .pyproject_pre_commit import main
 

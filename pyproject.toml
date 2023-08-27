@@ -38,7 +38,7 @@ flake8-string-format = "0.3.0"
 pep8-naming = "0.13.3"
 pycodestyle = "2.11.0"
 autoflake = "2.2.0"
-autopep8 = "2.0.2"
+autopep8 = "2.0.4"
 isort = "5.12.0"
 mypy = "1.5.1"
 bandit = {extras = ["toml"], version = "1.7.5"}

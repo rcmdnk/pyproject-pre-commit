@@ -569,14 +569,14 @@ test = ["black", "coverage[toml]", "ddt (>=1.1.1,!=1.4.3)", "mypy", "pre-commit"
 
 [[package]]
 name = "identify"
-version = "2.5.29"
+version = "2.5.30"
 description = "File identification library for Python"
 category = "main"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "identify-2.5.29-py2.py3-none-any.whl", hash = "sha256:24437fbf6f4d3fe6efd0eb9d67e24dd9106db99af5ceb27996a5f7895f24bf1b"},
-    {file = "identify-2.5.29.tar.gz", hash = "sha256:d43d52b86b15918c137e3a74fff5224f60385cd0e9c38e99d07c257f02f151a5"},
+    {file = "identify-2.5.30-py2.py3-none-any.whl", hash = "sha256:afe67f26ae29bab007ec21b03d4114f41316ab9dd15aa8736a167481e108da54"},
+    {file = "identify-2.5.30.tar.gz", hash = "sha256:f302a4256a15c849b91cfcdcec052a8ce914634b2f77ae87dad29cd749f2d88d"},
 ]
 
 [package.extras]
@@ -893,14 +893,14 @@ setuptools = "*"
 
 [[package]]
 name = "packaging"
-version = "23.1"
+version = "23.2"
 description = "Core utilities for Python packages"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "packaging-23.1-py3-none-any.whl", hash = "sha256:994793af429502c4ea2ebf6bf664629d07c1a9fe974af92966e4b8d2df7edc61"},
-    {file = "packaging-23.1.tar.gz", hash = "sha256:a392980d2b6cffa644431898be54b0045151319d1e7ec34f0cfed48767dd334f"},
+    {file = "packaging-23.2-py3-none-any.whl", hash = "sha256:8c491190033a9af7e1d931d0b5dacc2ef47509b34dd0de67ed209b5203fc88c7"},
+    {file = "packaging-23.2.tar.gz", hash = "sha256:048fb0e9405036518eaaf48a55953c750c11e1a1b68e0dd1a9d62ed0c092cfc5"},
 ]
 
 [[package]]
@@ -1189,14 +1189,14 @@ docutils = ">=0.11,<1.0"
 
 [[package]]
 name = "rich"
-version = "13.5.3"
+version = "13.6.0"
 description = "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal"
 category = "main"
 optional = false
 python-versions = ">=3.7.0"
 files = [
-    {file = "rich-13.5.3-py3-none-any.whl", hash = "sha256:9257b468badc3d347e146a4faa268ff229039d4c2d176ab0cffb4c4fbc73d5d9"},
-    {file = "rich-13.5.3.tar.gz", hash = "sha256:87b43e0543149efa1253f485cd845bb7ee54df16c9617b8a893650ab84b4acb6"},
+    {file = "rich-13.6.0-py3-none-any.whl", hash = "sha256:2b38e2fe9ca72c9a00170a1a2d20c63c790d0e10ef1fe35eba76e1e7b1d7d245"},
+    {file = "rich-13.6.0.tar.gz", hash = "sha256:5c14d22737e6d5084ef4771b62d5d4363165b403455a30a1c8ca39dc7b644bef"},
 ]
 
 [package.dependencies]
@@ -1209,14 +1209,14 @@ jupyter = ["ipywidgets (>=7.5.1,<9)"]
 
 [[package]]
 name = "ruamel-yaml"
-version = "0.17.32"
+version = "0.17.33"
 description = "ruamel.yaml is a YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order"
 category = "main"
 optional = false
 python-versions = ">=3"
 files = [
-    {file = "ruamel.yaml-0.17.32-py3-none-any.whl", hash = "sha256:23cd2ed620231677564646b0c6a89d138b6822a0d78656df7abda5879ec4f447"},
-    {file = "ruamel.yaml-0.17.32.tar.gz", hash = "sha256:ec939063761914e14542972a5cba6d33c23b0859ab6342f61cf070cfc600efc2"},
+    {file = "ruamel.yaml-0.17.33-py3-none-any.whl", hash = "sha256:2080c7a02b8a30fb3c06727cdf3e254a64055eedf3aa2d17c2b669639c04971b"},
+    {file = "ruamel.yaml-0.17.33.tar.gz", hash = "sha256:5c56aa0bff2afceaa93bffbfc78b450b7dc1e01d5edb80b3a570695286ae62b1"},
 ]
 
 [package.dependencies]
@@ -1292,16 +1292,16 @@ testing-integration = ["build[virtualenv] (>=1.0.3)", "filelock (>=3.4.0)", "jar
 
 [[package]]
 name = "shellcheck-py"
-version = "0.9.0.5"
+version = "0.9.0.6"
 description = "Python wrapper around invoking shellcheck (https://www.shellcheck.net/)"
 category = "main"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 files = [
-    {file = "shellcheck_py-0.9.0.5-py2.py3-none-macosx_10_15_x86_64.whl", hash = "sha256:98d9668f72afeb65c7a8e60f02202b00d64f2de9e9b103dfb5d0067ded391ef3"},
-    {file = "shellcheck_py-0.9.0.5-py2.py3-none-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:65ddc19a1ae4249802a663682834ed452f9e75615d58c3ce6b3f1b0d2a484f32"},
-    {file = "shellcheck_py-0.9.0.5-py2.py3-none-win_amd64.whl", hash = "sha256:9f50a7354f355753f365668e79aa3d410cb6f4d9358e4c5d8464018cf2b4863a"},
-    {file = "shellcheck_py-0.9.0.5.tar.gz", hash = "sha256:50b2057fac7227fd83614a9bf9d123042e53e03d92f2c7f1778448a8937f07a4"},
+    {file = "shellcheck_py-0.9.0.6-py2.py3-none-macosx_11_0_x86_64.whl", hash = "sha256:38d48a4e2279f5deac374574e7625cd53b7f615301f36b1b1fffd22105dc066d"},
+    {file = "shellcheck_py-0.9.0.6-py2.py3-none-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:730235c4f92657884f8b343d5426e4dc28e9a6ba9ad54d469cd038e340ea5be0"},
+    {file = "shellcheck_py-0.9.0.6-py2.py3-none-win_amd64.whl", hash = "sha256:d1d0c285e2c094813659e0920559a2892da598c1176da59cb4eb9e2f505e5ee8"},
+    {file = "shellcheck_py-0.9.0.6.tar.gz", hash = "sha256:f83a0ee1e9762f787ab52e8a906e553b9583586c44e3f9730b6e635f296a69e8"},
 ]
 
 [[package]]

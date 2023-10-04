@@ -40,7 +40,6 @@ jobs:
           new_tag=${last_tag%.*}.${minor}
           new_tag_no_v=${new_tag#v}
           sed -i"" "s/^version.*$/version = \"${new_tag_no_v}\"/" pyproject.toml
-          sed -i"" "s/^__version__.*$/__version__ = \"${new_tag_no_v}\"/"  src/pyproject_pre_commit/__init__.py
           if [ -n "$(git diff)" ];then
             echo "flag=1" >> $GITHUB_OUTPUT
             echo "lat_tag=${last_tag}" >> $GITHUB_OUTPUT

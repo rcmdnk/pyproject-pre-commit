@@ -1,5 +1,4 @@
-__version__ = "0.0.26"
-__program__ = "pyproject-pre-commit"
+from .__version__ import __version__
 from .pyproject_pre_commit import main
 
-__all__ = ["main"]
+__all__ = ["main", "__version__"]

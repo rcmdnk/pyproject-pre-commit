@@ -137,7 +137,7 @@ repos:
         language: system
         types: [markdown]
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.5.0
     hooks:
       - id: check-byte-order-marker
       - id: check-yaml

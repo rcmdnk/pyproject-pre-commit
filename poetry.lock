@@ -283,13 +283,13 @@ testing = ["hatch", "pre-commit", "pytest", "tox"]
 
 [[package]]
 name = "filelock"
-version = "3.13.0"
+version = "3.13.1"
 description = "A platform independent file lock."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "filelock-3.13.0-py3-none-any.whl", hash = "sha256:a552f4fde758f4eab33191e9548f671970f8b06d436d31388c9aa1e5861a710f"},
-    {file = "filelock-3.13.0.tar.gz", hash = "sha256:63c6052c82a1a24c873a549fbd39a26982e8f35a3016da231ead11a5be9dad44"},
+    {file = "filelock-3.13.1-py3-none-any.whl", hash = "sha256:57dbda9b35157b05fb3e58ee91448612eb674172fab98ee235ccb0b5bee19a1c"},
+    {file = "filelock-3.13.1.tar.gz", hash = "sha256:521f5f56c50f8426f5e03ad3b281b490a87ef15bc6c526f168290f0c7148d44e"},
 ]
 
 [package.extras]
@@ -1141,13 +1141,13 @@ jupyter = ["ipywidgets (>=7.5.1,<9)"]
 
 [[package]]
 name = "ruamel-yaml"
-version = "0.18.3"
+version = "0.18.5"
 description = "ruamel.yaml is a YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order"
 optional = false
-python-versions = ">=3"
+python-versions = ">=3.7"
 files = [
-    {file = "ruamel.yaml-0.18.3-py3-none-any.whl", hash = "sha256:b5d119e1f9678cf90b58f64bbd2a4e78af76860ae39fab3e73323e622b462df9"},
-    {file = "ruamel.yaml-0.18.3.tar.gz", hash = "sha256:36dbbe90390d977f957436570d2bd540bfd600e6ec5a1ea42bcdb9fc7963d802"},
+    {file = "ruamel.yaml-0.18.5-py3-none-any.whl", hash = "sha256:a013ac02f99a69cdd6277d9664689eb1acba07069f912823177c5eced21a6ada"},
+    {file = "ruamel.yaml-0.18.5.tar.gz", hash = "sha256:61917e3a35a569c1133a8f772e1226961bf5a1198bea7e23f06a0841dea1ab0e"},
 ]
 
 [package.dependencies]

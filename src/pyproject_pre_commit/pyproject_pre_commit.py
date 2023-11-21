@@ -21,6 +21,7 @@ def pre_commit() -> None:
       - id: flake8
       - id: bandit
       - id: mypy
+      - id: numpydoc-validation
       - id: shellcheck
       - id: mdformat-check
       - id: mdformat

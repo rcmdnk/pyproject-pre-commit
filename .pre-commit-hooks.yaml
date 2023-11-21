@@ -130,6 +130,15 @@
     - pyi
   require_serial: true
   pass_filenames: false
+- id: numpydoc-validation
+  # https://github.com/numpy/numpydoc
+  name: numpydoc-validation
+  entry: validate-docstrings
+  description: This hook validates that docstrings in committed files adhere to numpydoc standards.
+  require_serial: true
+  language: system
+  types:
+    - python
 - id: shellcheck
   # https://github.com/shellcheck-py/shellcheck-py
   name: shellcheck

@@ -117,6 +117,14 @@ repos:
           - pyi
         require_serial: true
         pass_filenames: false
+      - id: numpydoc-validation
+        # https://github.com/numpy/numpydoc
+        name: numpydoc-validation
+        entry: validate-docstrings
+        require_serial: true
+        language: system
+        types:
+          - python
       - id: shellcheck
         # https://github.com/shellcheck-py/shellcheck-py
         name: shellcheck

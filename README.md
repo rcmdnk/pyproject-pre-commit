@@ -92,7 +92,7 @@ Prepare **.pre-commit-config.yaml** like:
 ```yaml
 repos:
 - repo: https://github.com/rcmdnk/pyproject-pre-commit
-  rev: v0.0.1
+  rev: v0.1.1
   hooks:
   - id: black-diff
   - id: black

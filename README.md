@@ -1,11 +1,11 @@
-commit: [cb3750dd2e73b2c812fee9b41bf7cf2124dc8ca4](https://github.com/rcmdnk/pyproject-pre-commit/tree/cb3750dd2e73b2c812fee9b41bf7cf2124dc8ca4)
+commit: [f08bb50079ad5003731f83ed1221a3887e81801e](https://github.com/rcmdnk/pyproject-pre-commit/tree/f08bb50079ad5003731f83ed1221a3887e81801e)
 
 condition: branch=main, os=ubuntu-latest, python_version=3.10
 
-[![test](https://github.com/rcmdnk/pyproject-pre-commit/actions/workflows/test.yml/badge.svg)](https://github.com/rcmdnk/pyproject-pre-commit/actions/runs/7175333599)
-<a href="https://github.com/rcmdnk/pyproject-pre-commit/blob/cb3750dd2e73b2c812fee9b41bf7cf2124dc8ca4/README.md"><img alt="Coverage" src="https://img.shields.io/badge/Coverage-96%25-brightgreen.svg" /></a><details><summary>Coverage Report </summary><table><tr><th>File</th><th>Stmts</th><th>Miss</th><th>Cover</th><th>Missing</th></tr><tbody><tr><td colspan="5"><b>src/pyproject_pre_commit</b></td></tr><tr><td>&nbsp; &nbsp;<a href="https://github.com/rcmdnk/pyproject-pre-commit/blob/cb3750dd2e73b2c812fee9b41bf7cf2124dc8ca4/src/pyproject_pre_commit/pyproject_pre_commit.py">pyproject_pre_commit.py</a></td><td>18</td><td>1</td><td>94%</td><td><a href="https://github.com/rcmdnk/pyproject-pre-commit/blob/cb3750dd2e73b2c812fee9b41bf7cf2124dc8ca4/src/pyproject_pre_commit/pyproject_pre_commit.py#L92">92</a></td></tr><tr><td><b>TOTAL</b></td><td><b>23</b></td><td><b>1</b></td><td><b>96%</b></td><td>&nbsp;</td></tr></tbody></table></details>
+[![test](https://github.com/rcmdnk/pyproject-pre-commit/actions/workflows/test.yml/badge.svg)](https://github.com/rcmdnk/pyproject-pre-commit/actions/runs/7175342432)
+<a href="https://github.com/rcmdnk/pyproject-pre-commit/blob/f08bb50079ad5003731f83ed1221a3887e81801e/README.md"><img alt="Coverage" src="https://img.shields.io/badge/Coverage-96%25-brightgreen.svg" /></a><details><summary>Coverage Report </summary><table><tr><th>File</th><th>Stmts</th><th>Miss</th><th>Cover</th><th>Missing</th></tr><tbody><tr><td colspan="5"><b>src/pyproject_pre_commit</b></td></tr><tr><td>&nbsp; &nbsp;<a href="https://github.com/rcmdnk/pyproject-pre-commit/blob/f08bb50079ad5003731f83ed1221a3887e81801e/src/pyproject_pre_commit/pyproject_pre_commit.py">pyproject_pre_commit.py</a></td><td>18</td><td>1</td><td>94%</td><td><a href="https://github.com/rcmdnk/pyproject-pre-commit/blob/f08bb50079ad5003731f83ed1221a3887e81801e/src/pyproject_pre_commit/pyproject_pre_commit.py#L92">92</a></td></tr><tr><td><b>TOTAL</b></td><td><b>23</b></td><td><b>1</b></td><td><b>96%</b></td><td>&nbsp;</td></tr></tbody></table></details>
 
 | Tests | Skipped | Failures | Errors | Time |
 | ----- | ------- | -------- | -------- | ------------------ |
-| 5 | 0 :zzz: | 0 :x: | 0 :fire: | 0.634s :stopwatch: |
+| 5 | 0 :zzz: | 0 :x: | 0 :fire: | 0.623s :stopwatch: |
 

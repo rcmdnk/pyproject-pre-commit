@@ -61,26 +61,40 @@ jobs:
       - name: Check is main
         id: is_main
         run: |
-          if [ "${{ github.ref }}" = "refs/heads/${{ env.main_branch }}" ] && [ "${{ matrix.os }}" = "${{ env.main_os }}" ] && [ "${{ matrix.python-version }}" = "${{ env.main_py_ver }}" ];then
-            echo "is_main=1" >> $GITHUB_ENV
+          if [ "${{ github.ref }}" = "refs/heads/${{ env.MAIN_BRANCH }}" ] && [ "${{ matrix.os }}" = "${{ env.MAIN_OS }}" ] && [ "${{ matrix.python-version }}" = "${{ env.MAIN_PY_VER }}" ];then
+            echo "IS_MAIN=1" >> $GITHUB_ENV
             is_main=1
           else
-            echo "is_main=0" >> $GITHUB_ENV
+            echo "IS_MAIN=0" >> $GITHUB_ENV
             is_main=0
           fi
-          if [ "${{ env.tmate }}" = "true" ];then
+          if [ "${{ env.TMATE }}" = "true" ];then
             if [ "$is_main" = 0 ];then
               echo "Tmate is enabled and this is not main, skip tests"
               exit 1
             fi
-            echo "debug=1" >> $GITHUB_ENV
+            echo "DEBUG=1" >> $GITHUB_ENV
           else
-            echo "debug=0" >> $GITHUB_ENV
+            echo "DEBUG=0" >> $GITHUB_ENV
           fi
       - uses: rcmdnk/python-action@v2
         with:
+          checkout: 1
+          setup-python: 1
           python-version: "${{ matrix.python-version }}"
-          coverage-push: "${{ env.is_main }}"
-          coverage-push-condition: "branch=${{ env.main_branch }}, os=${{ env.main_os }}, python_version=${{ env.main_py_ver }}"
-          pre-commit: "1"
-          tmate: "${{ env.debug }}"
+          pip: 'pip'
+          setup-cmd: 'poetry install'
+          pip-packages: ''
+          poetry': 1
+          cache: 'poetry'
+          pytest: 1
+          pytest-tests-path: 'tests/'
+          pytest-ignore: ''
+          pytest-separate-benchmark: 0
+          coverage: 1
+          coverage-cov-path: 'src'
+          coverage-push: "${{ env.IS_MAIN }}"
+          coverage-push-condition: "branch=${{ env.MAIN_BRANCH }}, os=${{ env.MAIN_OS }}, python_version=${{ env.MAIN_PY_VER }}"
+          github_token: "${{github.token}}"
+          pre-commit: "${{ env.IS_MAIN }}"
+          tmate: "${{ env.DEBUG }}"

@@ -14,7 +14,7 @@ repos:
           - "--color"
         verbose: true
       - id: black
-        # https://github.com/psf/black
+        # https://github.com/psf/black-pre-commit-mirror
         name: black
         entry: black
         language: system
@@ -56,7 +56,7 @@ repos:
           - "--diff"
         verbose: true
       - id: autopep8
-        # https://github.com/pre-commit/mirrors-autopep8
+        # https://github.com/hhatto/autopep8
         name: autopep8
         entry: autopep8
         language: system

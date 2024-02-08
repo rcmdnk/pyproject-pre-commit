@@ -83,10 +83,11 @@ line_length = 79
 [tool.flake8]
 # E203 is not PEP8 compliant and black insert space around slice: [Frequently Asked Questions - Black 22.12.0 documentation](https://black.readthedocs.io/en/stable/faq.html#why-are-flake8-s-e203-and-w503-violated)
 # E501: Line too long. Disable it to allow long lines of comments and print lines which black allows.
+# E704: multiple statements on one line (def). This is inconsistent with black >= 24.1.1 (see ttps://github.com/psf/black/pull/3796)
 # W503 is the counter part of W504, which follows current PEP8: [Line break occurred before a binary operator (W503)](https://www.flake8rules.com/rules/W503.html)
 # D100~D106: Missing docstrings other than class (D101)
 # D401: First line should be in imperative mood
-ignore = "E203,E501,W503,D100,D102,D103,D104,D105,D106,D401"
+ignore = "E203,E501,E704,W503,D100,D102,D103,D104,D105,D106,D401"
 max-complexity = 10
 docstring-convention = "numpy"
 

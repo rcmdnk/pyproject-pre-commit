@@ -491,13 +491,13 @@ dev = ["coverage", "hypothesis", "hypothesmith (>=0.2)", "pre-commit", "pytest",
 
 [[package]]
 name = "flake8-builtins"
-version = "2.3.0"
+version = "2.4.0"
 description = "Check for python builtins being used as variables or parameters"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "flake8_builtins-2.3.0-py3-none-any.whl", hash = "sha256:2db907d96d2817beb3c861d46fad8dde647e76894c6af88a6cc91dd7c3c58bc6"},
-    {file = "flake8_builtins-2.3.0.tar.gz", hash = "sha256:c3669520104233356c1909389d1b5016107c93f4c494922e829fd3c65c10c81c"},
+    {file = "flake8_builtins-2.4.0-py3-none-any.whl", hash = "sha256:a9a2002855947081019a14e292200ab6e17ed637c0056aaa87ef23ea46fe8070"},
+    {file = "flake8_builtins-2.4.0.tar.gz", hash = "sha256:03ddfdbb40c6a0ad5375668b89d9d919970d026d65e6bb53185081c99822e466"},
 ]
 
 [package.dependencies]

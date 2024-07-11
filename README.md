@@ -3,16 +3,21 @@
 [![test](https://github.com/rcmdnk/pyproject-pre-commit/actions/workflows/test.yml/badge.svg)](https://github.com/rcmdnk/pyproject-pre-commit/actions/workflows/test.yml)
 [![test coverage](https://img.shields.io/badge/coverage-check%20here-blue.svg)](https://github.com/rcmdnk/pyproject-pre-commit/tree/coverage)
 
-pre-commit hooks for python projects using pyproject.toml.
+[pre-commit](https://pre-commit.com/) hooks for python projects.
 
 **.pre-commit-hooks.yaml** provides pre-defined ids which you just need to add these ids to your **.pre-commit-config.yaml**.
 
+By installing **pyproject-pre-commit** package,
+all necessary tools are installed as dependencies.
+
 ## Requirement
 
-- Python 3.11, 3.10, 3.9, 3.8
+- Python >= 3.8.1
 - Poetry (For development)
 
-## Installation
+## Usage
+
+### Install pyproject-pre-commit
 
 If your project uses poetry, do:
 
@@ -20,17 +25,92 @@ If your project uses poetry, do:
 $ poetry add --group dev pyproject-pre-commit
 ```
 
-Otherwise, install by pip:
+Otherwise, install the package in your working environment.
+
+If you use pip, do:
 
 ```
 $ pip install pyproject-pre-commit
 ```
 
-## The repository features
+This will install tools for pre-commit hooks in your working environment,
+so that you can use these tools, such as black, directly.
 
-If you install this package, several linters/formatters will be installed, too.
+### Prepare .pre-commit-config.yaml
 
-This repository has following hooks for [pre-commit](https://pre-commit.com/):
+Add **https://github.com/rcmdnk/pyproject-pre-commit** to your **.pre-commit-config.yaml**, like:
+
+```yaml
+repos:
+- repo: https://github.com/rcmdnk/pyproject-pre-commit
+  rev: v0.1.1
+  hooks:
+  - id: black-diff
+  - id: black
+  - id: blacken-docs
+  - id: autoflake-diff
+  - id: autoflake
+  - id: autopep8-diff
+  - id: autopep8
+  - id: isort-diff
+  - id: isort
+  - id: flake8
+  - id: bandit
+  - id: mypy
+  - id: shellcheck
+  - id: mdformat-check
+  - id: mdformat
+```
+
+By using **pyproject-pre-commit**, you can simplify your **.pre-commit-config.yaml**
+that you need only repo of **https://github.com/rcmdnk/pyproject-pre-commit**.
+
+These hooks uses local installation of tools, so pre-commit will use
+tools installed in your working environment.
+
+This can be made by `ppc` command:
+
+```
+$ ppc --pre-commit > .pre-commit-config.yaml
+```
+
+> \[!NOTE\]
+> If you are using poetry, run `poetry run ppc ... ` or run after `poetry shell`.
+
+If you already have it, add hooks w/o `repos:` by
+
+```
+$ ppc --pre-commit |grep -v "^repos:" >> .pre-commit-config.yaml
+```
+
+You may want to modify after adding these configurations.
+
+### Run pre-commit
+
+`pre-commit` command is installed as dependencies of **pyproject-pre-commit** package.
+
+After installing **pyproject-pre-commit** package, you can run `pre-commit` command.
+
+First, install pre-commit hooks by:
+
+```
+$ pre-commit install
+```
+
+then you can run pre-commit by:
+
+```
+$ pre-commit run --all-files
+```
+
+> \[!NOTE\]
+> If you are using poetry, run `poetry run pre-commit ... ` or run after `poetry shell`.
+
+## Available ids
+
+You can find ids in **.pre-commit-hooks.yaml**.
+
+There are ids for following tools:
 
 - For Python
   - black-diff: Just show Black result.
@@ -70,60 +150,23 @@ This repository has following hooks for [pre-commit](https://pre-commit.com/):
       - [mdformat-frontmatter](https://github.com/butler54/mdformat-frontmatter)
       - [mdformat-footnote](https://github.com/executablebooks/mdformat-footnote)
 
-All tools are installed as dependencies of this package.
+All tools are installed as dependencies of **pyproject-pre-commit** package.
 
 shellcheck and mdformat are given in addition to python tools
 as they can be managed by pip and most projects have README.md
 and some have shell scripts.
 
-For tools which can format files, there are additional ids ids with `-diff` or `--check`
-which just show the results and not modify files.
-You can see the difference after formatting if you place these ids before ids w/o `--diff` or `--check`.
+For tools which can format files, there are additional ids with `-diff` or `--check`
+which show the results before modifying files.
+You can see the differences after formatting if you place these ids before ids w/o `--diff` or `--check`.
 
-You can set options in pyproject.toml for all tools above:
+## Options for tools
 
-- flake8: flake8-pyproject allows to read options from pyproject.toml
-- bandit: There is a plugin for the flake8, but plugin version does not read options from pyproject.toml even with pyproject.toml. Therefore, use bandit directly and give `-c pyproject.toml` option in the hooks.
+You can set options in pyproject.toml for all tools above.
 
-## .pre-commit-config.yaml
+For flake8, flake8-pyproject allows to read options from pyproject.toml
 
-Prepare **.pre-commit-config.yaml** like:
-
-```yaml
-repos:
-- repo: https://github.com/rcmdnk/pyproject-pre-commit
-  rev: v0.1.1
-  hooks:
-  - id: black-diff
-  - id: black
-  - id: blacken-docs
-  - id: autoflake-diff
-  - id: autoflake
-  - id: autopep8-diff
-  - id: autopep8
-  - id: isort-diff
-  - id: isort
-  - id: flake8
-  - id: bandit
-  - id: mypy
-  - id: shellcheck
-  - id: mdformat-check
-  - id: mdformat
-```
-
-This can be made by `ppc` command:
-
-```
-$ ppc --pre-commit > .pre-commit-config.yaml
-```
-
-If you already have it, add hooks w/o `repos:` by
-
-```
-$ ppc --pre-commit |grep -v "^repos:" >> .pre-commit-config.yaml
-```
-
-You may want to modify after adding these configurations.
+About bandit, there is a plugin for the flake8, but plugin version does not read options from pyproject.toml even with pyproject.toml. Therefore, use bandit directly and give `-c pyproject.toml` option in the hooks.
 
 ## pyproject.toml
 

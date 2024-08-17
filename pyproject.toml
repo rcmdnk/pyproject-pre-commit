@@ -19,7 +19,7 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.8.1"
+python = "^3.9.0"
 pre-commit = "^3.3.3"
 black = "^24.3.0"
 blacken-docs = "^1.16.0"
@@ -42,7 +42,7 @@ autopep8 = "^2.0.4"
 isort = "^5.12.0"
 mypy = "^1.5.1"
 bandit = {extras = ["toml"], version = "^1.7.5"}
-numpydoc = "^1.6.0"
+numpydoc = "^1.8.0"
 shellcheck-py = "^0.9.0.5"
 mdformat = "^0.7.17"
 mdformat-gfm = "^0.3.5"

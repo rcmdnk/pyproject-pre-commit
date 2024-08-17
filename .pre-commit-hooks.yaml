@@ -132,7 +132,7 @@
   pass_filenames: false
 - id: numpydoc-validation
   # https://github.com/numpy/numpydoc
-  name: numpydoc-validation
+  name: numpydoc lint
   entry: validate-docstrings
   description: This hook validates that docstrings in committed files adhere to numpydoc standards.
   require_serial: true

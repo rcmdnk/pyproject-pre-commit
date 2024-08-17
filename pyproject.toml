@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyproject-pre-commit"
-version = "0.1.11"
+version = "0.2.0"
 description = "pre-commit hooks for python projects using pyproject.toml."
 authors = ["rcmdnk <rcmdnk@gmail.com>"]
 repository = "https://github.com/rcmdnk/pyproject-pre-commit"

@@ -12,6 +12,7 @@ repos:
         args:
           - "--diff"
           - "--color"
+          - "--quiet"
         verbose: true
       - id: black
         # https://github.com/psf/black-pre-commit-mirror
@@ -22,6 +23,8 @@ repos:
           - python
           - pyi
         require_serial: true
+        args:
+          - "--quiet"
       - id: blacken-docs
         # https://github.com/asottile/blacken-docs
         name: blacken-docs

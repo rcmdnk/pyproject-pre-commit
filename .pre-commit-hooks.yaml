@@ -12,6 +12,7 @@
     - "--diff"
     - "--color"
     - "--quiet"
+  verbose: true
 - id: black
   # https://github.com/psf/black
   name: black
@@ -40,6 +41,7 @@
   types:
     - python
   require_serial: true
+  verbose: true
 - id: autoflake
   # https://github.com/PyCQA/autoflake
   name: autoflake
@@ -85,6 +87,7 @@
   args:
     - '--diff'
     - '--filter-files'
+  verbose: true
 - id: isort
   # https://github.com/PyCQA/isort
   name: isort

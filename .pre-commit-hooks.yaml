@@ -11,7 +11,6 @@
   args:
     - "--diff"
     - "--color"
-    - "--quiet"
 - id: black
   # https://github.com/psf/black
   name: black
@@ -22,8 +21,6 @@
     - python
     - pyi
   require_serial: true
-  args:
-    - "--quiet"
 - id: blacken-docs
   # https://github.com/asottile/blacken-docs
   name: blacken-docs

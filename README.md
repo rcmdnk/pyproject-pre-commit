@@ -36,6 +36,18 @@ $ pip install pyproject-pre-commit
 This will install tools for pre-commit hooks in your working environment,
 so that you can use these tools, such as black, directly.
 
+### Install pyproject-pre-commit with ruff
+
+If you want to use ruff, you can install pyproject-pre-commit with ruff option.
+
+```
+$ poetry add --group dev "pyproject-pre-commit[ruff]"
+```
+
+```
+$ pip install pyproject-pre-commit[ruff]
+```
+
 ### Prepare .pre-commit-config.yaml
 
 Add **https://github.com/rcmdnk/pyproject-pre-commit** to your **.pre-commit-config.yaml**, like:
@@ -85,6 +97,29 @@ $ ppc --pre-commit |grep -v "^repos:" >> .pre-commit-config.yaml
 
 You may want to modify after adding these configurations.
 
+To use `ruff` instead of such as `black`, `flake8`, `isort`, add following hooks:
+
+```yaml
+repos:
+- repo: https://github.com/rcmdnk/pyproject-pre-commit
+  rev: v0.3.0
+  hooks:
+  - id: ruff-lint-diff
+  - id: ruff-lint
+  - id: ruff-format-diff
+  - id: ruff-format
+  - id: mypy
+  - id: shellcheck
+  - id: mdformat-check
+  - id: mdformat
+```
+
+This can be made by `ppc` command:
+
+```
+$ ppc --pre-commit --ruff > .pre-commit-config.yaml
+```
+
 ### Run pre-commit
 
 `pre-commit` command is installed as dependencies of **pyproject-pre-commit** package.
@@ -113,14 +148,14 @@ You can find ids in **.pre-commit-hooks.yaml**.
 There are ids for following tools:
 
 - For Python
-  - black-diff: Just show Black result.
+  - [black-diff](https://black.readthedocs.io/en/stable): Just show Black result.
   - [black](https://black.readthedocs.io/en/stable): Black: The uncompromising Python code formatter.
   - [blacken-docs](https://github.com/adamchainz/blacken-docs): Run `black` on python code blocks in documentation files.
-  - autoflake-diff: Just show autoflake result.
+  - [autoflake-diff](https://github.com/PyCQA/autoflake): Just show autoflake result.
   - [autoflake](https://github.com/PyCQA/autoflake): autoflake removes unused imports and unused variables from Python code.
-  - autopep8-diff: Just show autopep8.
+  - [autopep8-diff](https://github.com/hhatto/autopep8): Just show autopep8.
   - [autopep8](https://github.com/hhatto/autopep8): autopep8 automatically formats Python code to conform to the PEP 8 style guide.
-  - isort-diff: Just show isort result.
+  - [isort-diff](https://github.com/PyCQA/isort): Just show isort result.
   - [isort](https://github.com/PyCQA/isort): isort your imports, so you don't have to.
   - [flake8](https://github.com/PyCQA/flake8): `flake8` is a command-line utility for enforcing style consistency across Python projects.
     - With following plugins:
@@ -140,6 +175,10 @@ There are ids for following tools:
       - [pycodestyle](https://pycodestyle.pycqa.org/en/latest/)
   - [bandit](https://github.com/PyCQA/bandit): Bandit is a tool for finding common security issues in Python code.
   - [mypy](https://www.mypy-lang.org/): Mypy is a static type checker for Python.
+  - [ruff-lint-diff](https://docs.astral.sh/ruff/): Just show ruff check result.
+  - [ruff-lint](https://docs.astral.sh/ruff/): Fix by ruff for lint.
+  - [ruff-format-diff](https://docs.astral.sh/ruff/): Just show ruff format result.
+  - [ruff-format](https://docs.astral.sh/ruff/): Format by ruff.
 - For Shell script
   - [shellcheck](https://www.shellcheck.net/): ShellCheck - A shell script static analysis tool
 - For Markdown
@@ -176,6 +215,12 @@ Example options can be made by `ppc` command:
 
 ```
 $ ppc --pyproject >> pyproject.toml
+```
+
+or
+
+```
+$ ppc --pyproject --ruff >> pyproject.toml
 ```
 
 You may want to modify after adding these configurations.

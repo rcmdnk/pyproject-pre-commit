@@ -9,7 +9,7 @@ repository = "https://github.com/rcmdnk/pyproject-pre-commit"
 homepage = "https://github.com/rcmdnk/pyproject-pre-commit"
 readme = "README.md"
 license = "Apache-2.0"
-keywords = ["pre-commit", "pyproject.toml", "poetry"]
+keywords = ["pre-commit", "pyproject.toml", "uv"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Environment :: Console",
@@ -56,9 +56,6 @@ ruff = [
   "ruff >= 0.7.2",
 ]
 
-[tool.poetry.extras]
-ruff = ["ruff"]
-
 [dependency-groups]
 dev = [
   "pytest >= 8.0.0",
@@ -66,6 +63,9 @@ dev = [
   "pytest-xdist >= 3.3.1",
   "ruff >= 0.7.2",
 ]
+
+[project.scripts]
+ppc = "pyproject_pre_commit:main"
 
 [build-system]
 requires = ["hatchling"]
@@ -171,6 +171,3 @@ checks = [
     "PR02",  # "Unknown parameters {unknown_params}"
     "RT01",  # "No Returns section found"
 ]
-
-[tool.poetry.scripts]
-ppc = "pyproject_pre_commit:main"

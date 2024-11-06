@@ -22,7 +22,7 @@ def test_sys_exit(argv, out, capsys):
     sys.argv = argv
     with pytest.raises(SystemExit) as test:
         main()
-    assert test.type == SystemExit
+    assert test.type is SystemExit
     assert test.value.code == 1
     captured = capsys.readouterr()
     assert captured.out == out

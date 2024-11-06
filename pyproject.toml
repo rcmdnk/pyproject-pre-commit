@@ -67,7 +67,6 @@ optional = false
 [tool.poetry.group.ruff.dependencies]
 ruff = "^0.7.2"
 
-
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
@@ -81,8 +80,8 @@ line-length = 79
 # quote-style = "single"
 
 [tool.ruff.lint]
-# select = ["ALL"]
-# select = ["E4", "E7", "E9", "F"]  # black compatible
+## select = ["ALL"]
+## select = ["E4", "E7", "E9", "F"]  # default, black compatible
 select = [  # similar options to black, flake8 + plugins, isort etc...)
   #"E4",  # Import (comparable to black)
   #"E7",  # Indentation (comparable to black)
@@ -99,17 +98,20 @@ select = [  # similar options to black, flake8 + plugins, isort etc...)
   "N", # pep8-naming
   "E", # pycodestyle
   "W", # pycodestyle
-  "D", # pydocstyle
   "C90", # mccabe
 ]
+
 ignore = [
  "E203", # Not PEP8 compliant and black insert space around slice: [Frequently Asked Questions - Black 22.12.0 documentation](https://black.readthedocs.io/en/stable/faq.html#why-are-flake8-s-e203-and-w503-violated)
  "E501", # Line too long. Disable it to allow long lines of comments and print lines which black allows.
- "E704", # multiple statements on one line (def). This is inconsistent with black >= 24.1.1 (see ttps://github.com/psf/black/pull/3796)
- "W503", # is the counter part of W504, which follows current PEP8: [Line break occurred before a binary operator (W503)](https://www.flake8rules.com/rules/W503.html)
+# "E704", # NOT in ruff. multiple statements on one line (def). This is inconsistent with black >= 24.1.1 (see ttps://github.com/psf/black/pull/3796)
+# "W503", # NOT in ruff. is the counter part of W504, which follows current PEP8: [Line break occurred before a binary operator (W503)](https://www.flake8rules.com/rules/W503.html)
  "D100", "D102", "D103", "D104", "D105", "D106", # Missing docstrings other than class (D101)
  "D401", # First line should be in imperative mood
 ]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101"]
 
 [tool.ruff.lint.mccabe]
 max-complexity = 10

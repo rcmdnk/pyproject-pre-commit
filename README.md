@@ -12,7 +12,7 @@ all necessary tools are installed as dependencies.
 
 ## Requirement
 
-- Python >= 3.8.1
+- Python >= 3.9.0
 - Poetry (For development)
 
 ## Usage
@@ -43,7 +43,7 @@ Add **https://github.com/rcmdnk/pyproject-pre-commit** to your **.pre-commit-con
 ```yaml
 repos:
 - repo: https://github.com/rcmdnk/pyproject-pre-commit
-  rev: v0.1.1
+  rev: v0.3.0
   hooks:
   - id: black-diff
   - id: black

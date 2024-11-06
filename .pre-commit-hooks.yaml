@@ -1,3 +1,57 @@
+- id: ruff-lint-diff
+  # https://github.com/astral-sh/ruff-pre-commit
+  name: ruff-lint-diff
+  description: "Show diff of ruff for linting"
+  entry: ruff check --diff --force-exclude
+  language: system
+  types_or:
+    - python
+    - pyi
+    - cython
+    - jupyter
+  require_serial: true
+  minimum_pre_commit_version: "2.9.2"
+  verbose: true
+- id: ruff-lint
+  # https://github.com/astral-sh/ruff-pre-commit
+  name: ruff-lint
+  description: "Fix by ruff for linting"
+  entry: ruff check --fix --force-exclude
+  language: system
+  types_or:
+    - python
+    - pyi
+    - cython
+    - jupyter
+  require_serial: true
+  minimum_pre_commit_version: "2.9.2"
+- id: ruff-format-diff
+  # https://github.com/astral-sh/ruff-pre-commit
+  name: ruff-format-diff
+  description: "Show diff of ruff for formatting"
+  entry: ruff format --diff --force-exclude
+  language: python
+  types_or:
+    - python
+    - pyi
+    - cython
+    - jupyter
+  require_serial: true
+  minimum_pre_commit_version: "2.9.2"
+  verbose: true
+- id: ruff-format
+  # https://github.com/astral-sh/ruff-pre-commit
+  name: ruff-format
+  description: "Fix by ruff for formatting"
+  entry: ruff format --force-exclude
+  language: python
+  types_or:
+    - python
+    - pyi
+    - cython
+    - jupyter
+  require_serial: true
+  minimum_pre_commit_version: "2.9.2"
 - id: black-diff
   # https://github.com/psf/black
   name: black-diff
@@ -7,6 +61,8 @@
   types_or:
     - python
     - pyi
+    - cython
+    - jupyter
   require_serial: true
   args:
     - "--diff"
@@ -22,6 +78,8 @@
   types_or:
     - python
     - pyi
+    - cython
+    - jupyter
   require_serial: true
   args:
     - "--quiet"
@@ -40,6 +98,9 @@
   language: system
   types:
     - python
+    - pyi
+    - cython
+    - jupyter
   require_serial: true
   verbose: true
 - id: autoflake
@@ -50,6 +111,9 @@
   language: system
   types:
     - python
+    - pyi
+    - cython
+    - jupyter
   require_serial: true
   args:
     - "--in-place"
@@ -61,6 +125,9 @@
   language: system
   types:
     - python
+    - pyi
+    - cython
+    - jupyter
   args:
   - "--diff"
 - id: autopep8
@@ -71,6 +138,9 @@
   language: system
   types:
     - python
+    - pyi
+    - cython
+    - jupyter
   args:
   - "--in-place"
 - id: isort-diff
@@ -81,9 +151,10 @@
   language: system
   require_serial: true
   types_or:
-    - cython
-    - pyi
     - python
+    - pyi
+    - cython
+    - jupyter
   args:
     - '--diff'
     - '--filter-files'
@@ -96,9 +167,10 @@
   language: system
   require_serial: true
   types_or:
-    - cython
-    - pyi
     - python
+    - pyi
+    - cython
+    - jupyter
   args:
   - '--filter-files'
 - id: flake8
@@ -109,6 +181,9 @@
   language: system
   types:
     - python
+    - pyi
+    - cython
+    - jupyter
   require_serial: true
 - id: bandit
   # https://github.com/PyCQA/bandit
@@ -118,6 +193,9 @@
   language: system
   types:
     - python
+    - pyi
+    - cython
+    - jupyter
   args:
   - "-c"
   - "pyproject.toml"
@@ -130,6 +208,8 @@
   types_or:
     - python
     - pyi
+    - cython
+    - jupyter
   require_serial: true
   pass_filenames: false
 - id: numpydoc-validation
@@ -141,6 +221,9 @@
   language: system
   types:
     - python
+    - pyi
+    - cython
+    - jupyter
 - id: shellcheck
   # https://github.com/shellcheck-py/shellcheck-py
   name: shellcheck

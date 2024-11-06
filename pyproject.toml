@@ -21,6 +21,9 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.9.0"
 pre-commit = "^4.0.0"
+
+ruff = {version = "^0.7.2", optional = true}
+
 black = "^24.3.0"
 blacken-docs = "^1.16.0"
 flake8-pyproject = "^1.2.3"
@@ -40,8 +43,9 @@ pycodestyle = "^2.11.0"
 autoflake = "^2.2.1"
 autopep8 = "^2.0.4"
 isort = "^5.12.0"
-mypy = "^1.5.1"
 bandit = {extras = ["toml"], version = "^1.7.5"}
+
+mypy = "^1.5.1"
 numpydoc = "^1.8.0"
 shellcheck-py = "^0.9.0.5"
 mdformat = "^0.7.17"
@@ -49,10 +53,20 @@ mdformat-gfm = "^0.3.5"
 mdformat-frontmatter = "^2.0.1"
 mdformat-footnote = "^0.1.1"
 
+[tool.poetry.extras]
+ruff = ["ruff"]
+
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.0"
 pytest-cov = "^6.0.0"
 pytest-xdist = "^3.3.1"
+
+[tool.poetry.group.ruff]
+optional = false
+
+[tool.poetry.group.ruff.dependencies]
+ruff = "^0.7.2"
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -61,6 +75,47 @@ build-backend = "poetry.core.masonry.api"
 [tool.pytest.ini_options]
 addopts = "-n auto"
 testpaths = ["tests",]
+
+[tool.ruff]
+line-length = 79
+# quote-style = "single"
+
+[tool.ruff.lint]
+# select = ["ALL"]
+# select = ["E4", "E7", "E9", "F"]  # black compatible
+select = [  # similar options to black, flake8 + plugins, isort etc...)
+  #"E4",  # Import (comparable to black)
+  #"E7",  # Indentation (comparable to black)
+  #"E9",  # Blank line (comparable to black)
+  "F",   # String (comparable to black)
+  "I",   # Import order (comparable to isort)
+  "S",   # flake8-bandit (comparable to bandit)
+  "B",   # flake8-bugbear
+  "A",   # flake8-builtins
+  "C4",   # flake8-comprehensions
+  "T10",  # flake8-debugger
+  "EXE",  # flake8-executable
+  "T20", # flake8-print
+  "N", # pep8-naming
+  "E", # pycodestyle
+  "W", # pycodestyle
+  "D", # pydocstyle
+  "C90", # mccabe
+]
+ignore = [
+ "E203", # Not PEP8 compliant and black insert space around slice: [Frequently Asked Questions - Black 22.12.0 documentation](https://black.readthedocs.io/en/stable/faq.html#why-are-flake8-s-e203-and-w503-violated)
+ "E501", # Line too long. Disable it to allow long lines of comments and print lines which black allows.
+ "E704", # multiple statements on one line (def). This is inconsistent with black >= 24.1.1 (see ttps://github.com/psf/black/pull/3796)
+ "W503", # is the counter part of W504, which follows current PEP8: [Line break occurred before a binary operator (W503)](https://www.flake8rules.com/rules/W503.html)
+ "D100", "D102", "D103", "D104", "D105", "D106", # Missing docstrings other than class (D101)
+ "D401", # First line should be in imperative mood
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.format]
+docstring-code-format = true
 
 [tool.black]
 line-length = 79

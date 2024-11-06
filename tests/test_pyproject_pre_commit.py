@@ -10,11 +10,11 @@ from pyproject_pre_commit import __version__, main
     [
         (
             ["ppc"],
-            "Please specify only one of --pre-commit and --pyproject.\n",
+            "Usage: ppc <--pre-commit | --pyproject> [--ruff] [--black]\n",
         ),
         (
             ["ppc", "--wrong"],
-            "Please specify only one of --pre-commit and --pyproject.\n",
+            "Usage: ppc <--pre-commit | --pyproject> [--ruff] [--black]\n",
         ),
     ],
 )

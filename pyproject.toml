@@ -1,6 +1,6 @@
 [project]
 name = "pyproject-pre-commit"
-version = "0.3.0"
+version = "0.3.1"
 description = "pre-commit hooks for python projects using pyproject.toml."
 authors = [
   { name = "rcmdnk", email = "rcmdnk@gmail.com" }

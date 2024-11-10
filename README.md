@@ -1,4 +1,4 @@
-# pyproject-pre-commit
+# pyproject-pre-commit<a name="pyproject-pre-commit"></a>
 
 [![test](https://github.com/rcmdnk/pyproject-pre-commit/actions/workflows/test.yml/badge.svg)](https://github.com/rcmdnk/pyproject-pre-commit/actions/workflows/test.yml)
 [![test coverage](https://img.shields.io/badge/coverage-check%20here-blue.svg)](https://github.com/rcmdnk/pyproject-pre-commit/tree/coverage)
@@ -10,14 +10,28 @@
 By installing **pyproject-pre-commit** package,
 all necessary tools are installed as dependencies.
 
-## Requirement
+<!-- mdformat-toc start --slug=github --maxlevel=6 --minlevel=2 -->
+
+- [Requirement](#requirement)
+- [Usage](#usage)
+  - [Install pyproject-pre-commit](#install-pyproject-pre-commit)
+  - [Install pyproject-pre-commit with ruff](#install-pyproject-pre-commit-with-ruff)
+  - [Prepare .pre-commit-config.yaml](#prepare-pre-commit-configyaml)
+  - [Run pre-commit](#run-pre-commit)
+- [Available ids](#available-ids)
+- [Options for tools](#options-for-tools)
+- [pyproject.toml](#pyprojecttoml)
+
+<!-- mdformat-toc end -->
+
+## Requirement<a name="requirement"></a>
 
 - Python >= 3.9.0
 - Poetry (For development)
 
-## Usage
+## Usage<a name="usage"></a>
 
-### Install pyproject-pre-commit
+### Install pyproject-pre-commit<a name="install-pyproject-pre-commit"></a>
 
 If your project uses poetry, do:
 
@@ -36,7 +50,7 @@ $ pip install pyproject-pre-commit
 This will install tools for pre-commit hooks in your working environment,
 so that you can use these tools, such as black, directly.
 
-### Install pyproject-pre-commit with ruff
+### Install pyproject-pre-commit with ruff<a name="install-pyproject-pre-commit-with-ruff"></a>
 
 If you want to use ruff, you can install pyproject-pre-commit with ruff option.
 
@@ -48,30 +62,30 @@ $ poetry add --group dev "pyproject-pre-commit[ruff]"
 $ pip install pyproject-pre-commit[ruff]
 ```
 
-### Prepare .pre-commit-config.yaml
+### Prepare .pre-commit-config.yaml<a name="prepare-pre-commit-configyaml"></a>
 
 Add **https://github.com/rcmdnk/pyproject-pre-commit** to your **.pre-commit-config.yaml**, like:
 
 ```yaml
 repos:
-- repo: https://github.com/rcmdnk/pyproject-pre-commit
-  rev: v0.3.0
-  hooks:
-  - id: black-diff
-  - id: black
-  - id: blacken-docs
-  - id: autoflake-diff
-  - id: autoflake
-  - id: autopep8-diff
-  - id: autopep8
-  - id: isort-diff
-  - id: isort
-  - id: flake8
-  - id: bandit
-  - id: mypy
-  - id: shellcheck
-  - id: mdformat-check
-  - id: mdformat
+  - repo: https://github.com/rcmdnk/pyproject-pre-commit
+    rev: v0.3.0
+    hooks:
+      - id: black-diff
+      - id: black
+      - id: blacken-docs
+      - id: autoflake-diff
+      - id: autoflake
+      - id: autopep8-diff
+      - id: autopep8
+      - id: isort-diff
+      - id: isort
+      - id: flake8
+      - id: bandit
+      - id: mypy
+      - id: shellcheck
+      - id: mdformat-check
+      - id: mdformat
 ```
 
 By using **pyproject-pre-commit**, you can simplify your **.pre-commit-config.yaml**
@@ -101,17 +115,17 @@ To use `ruff` instead of such as `black`, `flake8`, `isort`, add following hooks
 
 ```yaml
 repos:
-- repo: https://github.com/rcmdnk/pyproject-pre-commit
-  rev: v0.3.0
-  hooks:
-  - id: ruff-lint-diff
-  - id: ruff-lint
-  - id: ruff-format-diff
-  - id: ruff-format
-  - id: mypy
-  - id: shellcheck
-  - id: mdformat-check
-  - id: mdformat
+  - repo: https://github.com/rcmdnk/pyproject-pre-commit
+    rev: v0.3.0
+    hooks:
+      - id: ruff-lint-diff
+      - id: ruff-lint
+      - id: ruff-format-diff
+      - id: ruff-format
+      - id: mypy
+      - id: shellcheck
+      - id: mdformat-check
+      - id: mdformat
 ```
 
 This can be made by `ppc` command:
@@ -120,7 +134,7 @@ This can be made by `ppc` command:
 $ ppc --pre-commit --ruff > .pre-commit-config.yaml
 ```
 
-### Run pre-commit
+### Run pre-commit<a name="run-pre-commit"></a>
 
 `pre-commit` command is installed as dependencies of **pyproject-pre-commit** package.
 
@@ -141,7 +155,7 @@ $ pre-commit run --all-files
 > \[!NOTE\]
 > If you are using poetry, run `poetry run pre-commit ... ` or run after `poetry shell`.
 
-## Available ids
+## Available ids<a name="available-ids"></a>
 
 You can find ids in **.pre-commit-hooks.yaml**.
 
@@ -199,7 +213,7 @@ For tools which can format files, there are additional ids with `-diff` or `--ch
 which show the results before modifying files.
 You can see the differences after formatting if you place these ids before ids w/o `--diff` or `--check`.
 
-## Options for tools
+## Options for tools<a name="options-for-tools"></a>
 
 You can set options in pyproject.toml for all tools above.
 
@@ -207,7 +221,7 @@ For flake8, flake8-pyproject allows to read options from pyproject.toml
 
 About bandit, there is a plugin for the flake8, but plugin version does not read options from pyproject.toml even with pyproject.toml. Therefore, use bandit directly and give `-c pyproject.toml` option in the hooks.
 
-## pyproject.toml
+## pyproject.toml<a name="pyprojecttoml"></a>
 
 You can set options in pyproject.toml for all tools.
 

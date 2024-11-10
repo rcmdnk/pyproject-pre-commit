@@ -171,7 +171,7 @@ repos:
       - id: numpydoc-validation
         # https://github.com/numpy/numpydoc
         name: numpydoc-validation
-        entry: validate-docstrings
+        entry: numpydoc lint
         require_serial: true
         language: system
         types:

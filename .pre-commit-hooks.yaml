@@ -30,7 +30,7 @@
   name: ruff-format-diff
   description: "Show diff of ruff for formatting"
   entry: ruff format --diff --force-exclude
-  language: python
+  language: system
   types_or:
     - python
     - pyi
@@ -44,7 +44,7 @@
   name: ruff-format
   description: "Fix by ruff for formatting"
   entry: ruff format --force-exclude
-  language: python
+  language: system
   types_or:
     - python
     - pyi

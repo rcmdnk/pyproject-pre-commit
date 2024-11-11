@@ -57,9 +57,10 @@ dependencies = [
 ]
 
 [project.urls]
-repository = "https://github.com/rcmdnk/pyproject-pre-commit"
-homepage = "https://github.com/rcmdnk/pyproject-pre-commit"
-documentation = "https://github.com/rcmdnk/pyproject-pre-commit"
+Repository = "https://github.com/rcmdnk/pyproject-pre-commit"
+Documentation = "https://github.com/rcmdnk/pyproject-pre-commit"
+Homepage = "https://github.com/rcmdnk/pyproject-pre-commit"
+Issue = "https://github.com/rcmdnk/pyproject-pre-commit/issues"
 
 [project.optional-dependencies]
 ruff = [

@@ -1,3 +1,4 @@
+---
 repos:
   - repo: local
     hooks:
@@ -195,6 +196,12 @@ repos:
         entry: mdformat
         language: system
         types: [markdown]
+      - id: validate-pyproject
+        name: validate-pyproject
+        entry: validate-pyproject
+        language: system
+        types: []
+        files: ^pyproject.toml$
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:

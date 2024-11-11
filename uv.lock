@@ -387,6 +387,15 @@ wheels = [
 ]
 
 [[package]]
+name = "fastjsonschema"
+version = "2.20.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/03/3f/3ad5e7be13b4b8b55f4477141885ab2364f65d5f6ad5f7a9daffd634d066/fastjsonschema-2.20.0.tar.gz", hash = "sha256:3d48fc5300ee96f5d116f10fe6f28d938e6008f59a6a025c2649475b87f76a23", size = 373056 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/6d/ca/086311cdfc017ec964b2436fe0c98c1f4efcb7e4c328956a22456e497655/fastjsonschema-2.20.0-py3-none-any.whl", hash = "sha256:5875f0b0fa7a0043a91e93a9b8f793bcbbba9691e7fd83dca95c28ba26d21f0a", size = 23543 },
+]
+
+[[package]]
 name = "filelock"
 version = "3.16.1"
 source = { registry = "https://pypi.org/simple" }
@@ -1134,6 +1143,7 @@ dependencies = [
     { name = "pre-commit" },
     { name = "pycodestyle" },
     { name = "shellcheck-py" },
+    { name = "validate-pyproject", extra = ["all"] },
 ]
 
 [package.optional-dependencies]
@@ -1189,6 +1199,7 @@ requires-dist = [
     { name = "pycodestyle", specifier = ">=2.11.0" },
     { name = "ruff", marker = "extra == 'ruff'", specifier = ">=0.7.2" },
     { name = "shellcheck-py", specifier = ">=0.9.0.5" },
+    { name = "validate-pyproject", extras = ["all"], specifier = ">=0.22" },
 ]
 
 [package.metadata.requires-dev]
@@ -1586,6 +1597,15 @@ wheels = [
 ]
 
 [[package]]
+name = "trove-classifiers"
+version = "2024.10.21.16"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/99/85/92c2667cf221b37648041ce9319427f92fa76cbec634aad844e67e284706/trove_classifiers-2024.10.21.16.tar.gz", hash = "sha256:17cbd055d67d5e9d9de63293a8732943fabc21574e4c7b74edf112b4928cf5f3", size = 16153 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/35/35/5055ab8d215af853d07bbff1a74edf48f91ed308f037380a5ca52dd73348/trove_classifiers-2024.10.21.16-py3-none-any.whl", hash = "sha256:0fb11f1e995a757807a8ef1c03829fbd4998d817319abcef1f33165750f103be", size = 13546 },
+]
+
+[[package]]
 name = "typing-extensions"
 version = "4.12.2"
 source = { registry = "https://pypi.org/simple" }
@@ -1610,6 +1630,25 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/ed/63/22ba4ebfe7430b76388e7cd448d5478814d3032121827c12a2cc287e2260/urllib3-2.2.3.tar.gz", hash = "sha256:e7d814a81dad81e6caf2ec9fdedb284ecc9c73076b62654547cc64ccdcae26e9", size = 300677 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ce/d9/5f4c13cecde62396b0d3fe530a50ccea91e7dfc1ccf0e09c228841bb5ba8/urllib3-2.2.3-py3-none-any.whl", hash = "sha256:ca899ca043dcb1bafa3e262d73aa25c465bfb49e0bd9dd5d59f1d0acba2f8fac", size = 126338 },
+]
+
+[[package]]
+name = "validate-pyproject"
+version = "0.22"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "fastjsonschema" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/16/eb/758cc41af04ce1c6714a04b95add9769b75675467f43ff5abd48725a7d89/validate_pyproject-0.22.tar.gz", hash = "sha256:5d9a0fa67380ae6b19bcfc253d8d4af9fbcddc59540887efff486ea3075a16bb", size = 112776 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f8/df/a722c2579283240f86efb0f5f23e6f5e6559b0b73869042e43ac7d7c931b/validate_pyproject-0.22-py3-none-any.whl", hash = "sha256:0200c076741f92374ad2e45fbefda085e0f45507f816dd85481b7b778fc1aef3", size = 52646 },
+]
+
+[package.optional-dependencies]
+all = [
+    { name = "packaging" },
+    { name = "tomli", marker = "python_full_version < '3.11'" },
+    { name = "trove-classifiers" },
 ]
 
 [[package]]

@@ -1,3 +1,4 @@
+---
 - id: ruff-lint-diff
   # https://github.com/astral-sh/ruff-pre-commit
   name: ruff-lint-diff
@@ -9,9 +10,9 @@
     - pyi
     - cython
     - jupyter
-  require_serial: true
   minimum_pre_commit_version: "2.9.2"
   verbose: true
+  require_serial: true
 - id: ruff-lint
   # https://github.com/astral-sh/ruff-pre-commit
   name: ruff-lint
@@ -23,8 +24,8 @@
     - pyi
     - cython
     - jupyter
-  require_serial: true
   minimum_pre_commit_version: "2.9.2"
+  require_serial: true
 - id: ruff-format-diff
   # https://github.com/astral-sh/ruff-pre-commit
   name: ruff-format-diff
@@ -36,9 +37,9 @@
     - pyi
     - cython
     - jupyter
-  require_serial: true
   minimum_pre_commit_version: "2.9.2"
   verbose: true
+  require_serial: true
 - id: ruff-format
   # https://github.com/astral-sh/ruff-pre-commit
   name: ruff-format
@@ -50,8 +51,8 @@
     - pyi
     - cython
     - jupyter
-  require_serial: true
   minimum_pre_commit_version: "2.9.2"
+  require_serial: true
 - id: black-diff
   # https://github.com/psf/black
   name: black-diff
@@ -63,12 +64,12 @@
     - pyi
     - cython
     - jupyter
-  require_serial: true
   args:
     - "--diff"
     - "--color"
     - "--quiet"
   verbose: true
+  require_serial: true
 - id: black
   # https://github.com/psf/black
   name: black
@@ -80,9 +81,9 @@
     - pyi
     - cython
     - jupyter
-  require_serial: true
   args:
     - "--quiet"
+  require_serial: true
 - id: blacken-docs
   # https://github.com/asottile/blacken-docs
   name: blacken-docs
@@ -90,6 +91,7 @@
   entry: blacken-docs
   language: system
   files: '\.(rst|md|markdown|py|tex)$'
+  require_serial: true
 - id: autoflake-diff
   # https://github.com/PyCQA/autoflake
   name: autoflake-diff
@@ -101,8 +103,8 @@
     - pyi
     - cython
     - jupyter
-  require_serial: true
   verbose: true
+  require_serial: true
 - id: autoflake
   # https://github.com/PyCQA/autoflake
   name: autoflake
@@ -114,9 +116,9 @@
     - pyi
     - cython
     - jupyter
-  require_serial: true
   args:
     - "--in-place"
+  require_serial: true
 - id: autopep8-diff
   # https://github.com/pre-commit/mirrors-autopep8
   name: autopep8-diff
@@ -130,6 +132,7 @@
     - jupyter
   args:
   - "--diff"
+  require_serial: true
 - id: autopep8
   # https://github.com/pre-commit/mirrors-autopep8
   name: autopep8
@@ -143,13 +146,13 @@
     - jupyter
   args:
   - "--in-place"
+  require_serial: true
 - id: isort-diff
   # https://github.com/PyCQA/isort
   name: isort-diff
   description: Just show the diff of isort result.
   entry: isort
   language: system
-  require_serial: true
   types_or:
     - python
     - pyi
@@ -159,13 +162,13 @@
     - '--diff'
     - '--filter-files'
   verbose: true
+  require_serial: true
 - id: isort
   # https://github.com/PyCQA/isort
   name: isort
   description: isort your imports, so you don't have to.
   entry: isort
   language: system
-  require_serial: true
   types_or:
     - python
     - pyi
@@ -173,6 +176,7 @@
     - jupyter
   args:
   - '--filter-files'
+  require_serial: true
 - id: flake8
   # https://github.com/PyCQA/flake8
   name: flake8
@@ -199,6 +203,7 @@
   args:
   - "-c"
   - "pyproject.toml"
+  require_serial: true
 - id: mypy
   # https://github.com/pre-commit/mirrors-mypy
   name: mypy
@@ -210,20 +215,20 @@
     - pyi
     - cython
     - jupyter
-  require_serial: true
   pass_filenames: false
+  require_serial: true
 - id: numpydoc-validation
   # https://github.com/numpy/numpydoc
   name: numpydoc-validation
   entry: numpydoc lint
   description: This hook validates that docstrings in committed files adhere to numpydoc standards.
-  require_serial: true
   language: system
   types:
     - python
     - pyi
     - cython
     - jupyter
+  require_serial: true
 - id: shellcheck
   # https://github.com/shellcheck-py/shellcheck-py
   name: shellcheck
@@ -241,6 +246,7 @@
   types: [markdown]
   args:
     - "--check"
+  require_serial: true
 - id: mdformat
   # https://github.com/executablebooks/mdformat
   name: mdformat
@@ -248,3 +254,12 @@
   entry: mdformat
   language: system
   types: [markdown]
+  require_serial: true
+- id: validate-pyproject
+  # https://github.com/abravalheri/validate-pyproject
+  name: validate-pyproject
+  description: Validate pyproject.toml file
+  entry: validate-pyproject
+  language: system
+  files: ^pyproject.toml$
+  require_serial: true

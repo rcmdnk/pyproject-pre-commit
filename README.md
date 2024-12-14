@@ -100,7 +100,7 @@ This can be made by `ppc` command:
 $ ppc --pre-commit > .pre-commit-config.yaml
 ```
 
-> \[!NOTE\]
+> [!NOTE]
 > If you are using poetry, run `poetry run ppc ... ` or run after `poetry shell`.
 
 If you already have it, add hooks w/o `repos:` by
@@ -152,7 +152,7 @@ then you can run pre-commit by:
 $ pre-commit run --all-files
 ```
 
-> \[!NOTE\]
+> [!NOTE]
 > If you are using poetry, run `poetry run pre-commit ... ` or run after `poetry shell`.
 
 ## Available ids<a name="available-ids"></a>

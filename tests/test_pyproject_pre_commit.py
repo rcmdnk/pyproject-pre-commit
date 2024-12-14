@@ -6,24 +6,26 @@ from pyproject_pre_commit import __version__, main
 
 
 @pytest.mark.parametrize(
-    "argv, out",
+    "argv, code, out",
     [
         (
             ["ppc"],
+            0,
             "Usage: ppc <--pre-commit | --pyproject> [--ruff] [--black]\n",
         ),
         (
             ["ppc", "--wrong"],
+            1,
             "Usage: ppc <--pre-commit | --pyproject> [--ruff] [--black]\n",
         ),
     ],
 )
-def test_sys_exit(argv, out, capsys):
+def test_sys_exit(argv, code, out, capsys):
     sys.argv = argv
     with pytest.raises(SystemExit) as test:
         main()
     assert test.type is SystemExit
-    assert test.value.code == 1
+    assert test.value.code == code
     captured = capsys.readouterr()
     assert captured.out == out
 

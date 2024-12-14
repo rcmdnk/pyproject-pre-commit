@@ -133,15 +133,27 @@ ignore-missing-imports = true
 scripts_are_modules = true
 install_types = true
 non_interactive = true
+
+[tool.numpydoc_validation]
+checks = [
+    "all",   # report on all checks, except the below
+    "EX01",  # "No examples section found"
+    "ES01",  # "No extended summary found"
+    "SA01",  # "See Also section not found"
+    "GL08",  # "The object does not have a docstring"
+    "PR01",  # "Parameters {missing_params} not documented"
+    "PR02",  # "Unknown parameters {unknown_params}"
+    "RT01",  # "No Returns section found"
+]
 """
     )
 
 
 def main() -> None:
     usage = "Usage: ppc <--pre-commit | --pyproject> [--ruff] [--black]"
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 2:
         print(usage)  # noqa: T201
-        sys.exit(1)
+        sys.exit(0)
     is_ruff = "--ruff" in sys.argv
     if "--pre-commit" in sys.argv:
         pre_commit(is_ruff)

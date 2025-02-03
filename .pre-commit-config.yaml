@@ -196,6 +196,12 @@ repos:
         entry: mdformat
         language: system
         types: [markdown]
+      - id: actionlint
+        name: actionlint
+        entry: actionlint
+        language: system
+        types: [yaml]
+        files: "^.github/workflows/"
       - id: validate-pyproject
         name: validate-pyproject
         entry: validate-pyproject

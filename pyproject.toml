@@ -1,6 +1,6 @@
 [project]
 name = "pyproject-pre-commit"
-version = "0.3.6"
+version = "0.4.0"
 description = "pre-commit hooks for python projects using pyproject.toml."
 authors = [
   { name = "rcmdnk", email = "rcmdnk@gmail.com" }
@@ -20,6 +20,35 @@ classifiers = [
 requires-python = ">=3.9.0"
 dependencies = [
   "pre-commit >= 4.0.0",
+  "mypy >= 1.5.1",
+  "numpydoc >= 1.8.0",
+  "shellcheck-py >= 0.9.0.5",
+  "mdformat >= 0.7.17",
+  "mdformat-pyproject>=0.0.1",
+  "mdformat-config>=0.2.1",
+  "mdformat-rustfmt>=0.0.3",
+  "mdformat-footnote >= 0.1.1",
+  "mdformat-frontmatter >= 2.0.1",
+  "mdformat-gfm >= 0.3.5",
+  "mdformat-tables>=1.0.0",
+  "mdformat-web>=0.2.0",
+  "mdformat-toc>=0.3.0",
+  "actionlint-py>=1.7.7.23",
+  "validate-pyproject[all]>=0.22",
+]
+
+[project.urls]
+Repository = "https://github.com/rcmdnk/pyproject-pre-commit"
+Documentation = "https://github.com/rcmdnk/pyproject-pre-commit"
+Homepage = "https://github.com/rcmdnk/pyproject-pre-commit"
+Issue = "https://github.com/rcmdnk/pyproject-pre-commit/issues"
+
+[project.optional-dependencies]
+ruff = [
+  "ruff >= 0.7.2",
+  "mdformat-ruff >= 0.1.3",
+]
+black = [
   "black >= 24.3.0",
   "blacken-docs >= 1.16.0",
   "flake8-pyproject >= 1.2.3",
@@ -40,32 +69,30 @@ dependencies = [
   "autopep8 >= 2.0.4",
   "isort >= 5.12.0",
   "bandit[toml] >= 1.7.5",
-  "mypy >= 1.5.1",
-  "numpydoc >= 1.8.0",
-  "shellcheck-py >= 0.9.0.5",
-  "mdformat >= 0.7.17",
-  "mdformat-pyproject>=0.0.1",
-  "mdformat-config>=0.2.1",
-  "mdformat-rustfmt>=0.0.3",
-  "mdformat-footnote >= 0.1.1",
-  "mdformat-frontmatter >= 2.0.1",
-  "mdformat-gfm >= 0.3.5",
-  "mdformat-tables>=1.0.0",
-  "mdformat-web>=0.2.0",
-  "mdformat-toc>=0.3.0",
-  "validate-pyproject[all]>=0.22",
 ]
-
-[project.urls]
-Repository = "https://github.com/rcmdnk/pyproject-pre-commit"
-Documentation = "https://github.com/rcmdnk/pyproject-pre-commit"
-Homepage = "https://github.com/rcmdnk/pyproject-pre-commit"
-Issue = "https://github.com/rcmdnk/pyproject-pre-commit/issues"
-
-[project.optional-dependencies]
-ruff = [
+all = [
   "ruff >= 0.7.2",
   "mdformat-ruff >= 0.1.3",
+  "black >= 24.3.0",
+  "blacken-docs >= 1.16.0",
+  "flake8-pyproject >= 1.2.3",
+  "flake8-annotations-complexity >= 0.0.8",
+  "flake8-bugbear >= 24.0.0",
+  "flake8-builtins >= 2.1.0",
+  "flake8-comprehensions >= 3.14.0",
+  "flake8-debugger >= 4.1.2",
+  "flake8-docstrings >= 1.7.0",
+  "flake8-executable >= 2.1.3",
+  "flake8-pep3101 >= 2.0.0",
+  "flake8-print >= 5.0.0",
+  "flake8-rst-docstrings >= 0.3.0",
+  "flake8-string-format >= 0.3.0",
+  "pep8-naming >= 0.14.0",
+  "pycodestyle >= 2.11.0",
+  "autoflake >= 2.2.1",
+  "autopep8 >= 2.0.4",
+  "isort >= 5.12.0",
+  "bandit[toml] >= 1.7.5",
 ]
 
 [dependency-groups]
@@ -75,6 +102,26 @@ dev = [
   "pytest-xdist >= 3.3.1",
   "ruff >= 0.7.2",
   "mdformat-ruff >= 0.1.3",
+  "black >= 24.3.0",
+  "blacken-docs >= 1.16.0",
+  "flake8-pyproject >= 1.2.3",
+  "flake8-annotations-complexity >= 0.0.8",
+  "flake8-bugbear >= 24.0.0",
+  "flake8-builtins >= 2.1.0",
+  "flake8-comprehensions >= 3.14.0",
+  "flake8-debugger >= 4.1.2",
+  "flake8-docstrings >= 1.7.0",
+  "flake8-executable >= 2.1.3",
+  "flake8-pep3101 >= 2.0.0",
+  "flake8-print >= 5.0.0",
+  "flake8-rst-docstrings >= 0.3.0",
+  "flake8-string-format >= 0.3.0",
+  "pep8-naming >= 0.14.0",
+  "pycodestyle >= 2.11.0",
+  "autoflake >= 2.2.1",
+  "autopep8 >= 2.0.4",
+  "isort >= 5.12.0",
+  "bandit[toml] >= 1.7.5",
 ]
 
 [project.scripts]

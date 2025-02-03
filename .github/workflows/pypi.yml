@@ -24,11 +24,11 @@ jobs:
         run: |
           git pull --tags
           last_tag=$(git tag --sort=version:refname | tail -n1)
-          echo $last_tag
-          if [ -n "$(git diff $last_tag src pyproject.toml)" ];then
-            echo "flag=1" >> $GITHUB_OUTPUT
+          echo "$last_tag"
+          if [ -n "$(git diff "$last_tag" src pyproject.toml)" ];then
+            echo "flag=1" >> "$GITHUB_OUTPUT"
           else
-            echo "flag=0"  >> $GITHUB_OUTPUT
+            echo "flag=0"  >> "$GITHUB_OUTPUT"
           fi
       - name: Update tag
         id: update
@@ -41,11 +41,9 @@ jobs:
           new_tag_no_v=${new_tag#v}
           sed -i"" "s/^version.*$/version = \"${new_tag_no_v}\"/" pyproject.toml
           if [ -n "$(git diff)" ];then
-            echo "flag=1" >> $GITHUB_OUTPUT
-            echo "lat_tag=${last_tag}" >> $GITHUB_OUTPUT
-            echo "new_tag=${new_tag}" >> $GITHUB_OUTPUT
+            { echo "flag=1"; "lat_tag=${last_tag}"; "new_tag=${new_tag}"; } >> "$GITHUB_OUTPUT"
           else
-            echo "flag=0"  >> $GITHUB_OUTPUT
+            echo "flag=0"  >> "$GITHUB_OUTPUT"
           fi
       - name: Commit and push
         if: ${{ steps.check.outputs.flag == 1 && steps.update.outputs.flag == 1 }}

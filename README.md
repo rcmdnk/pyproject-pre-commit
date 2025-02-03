@@ -15,7 +15,6 @@ all necessary tools are installed as dependencies.
 - [Requirement](#requirement)
 - [Usage](#usage)
   - [Install pyproject-pre-commit](#install-pyproject-pre-commit)
-  - [Install pyproject-pre-commit with ruff](#install-pyproject-pre-commit-with-ruff)
   - [Prepare .pre-commit-config.yaml](#prepare-pre-commit-configyaml)
   - [Run pre-commit](#run-pre-commit)
 - [Available ids](#available-ids)
@@ -27,7 +26,6 @@ all necessary tools are installed as dependencies.
 ## Requirement<a name="requirement"></a>
 
 - Python >= 3.9.0
-- Poetry (For development)
 
 ## Usage<a name="usage"></a>
 
@@ -36,31 +34,39 @@ all necessary tools are installed as dependencies.
 If your project uses poetry, do:
 
 ```
-$ poetry add --group dev pyproject-pre-commit
+$ poetry add --group dev pyproject-pre-commit[ruff]
 ```
 
-Otherwise, install the package in your working environment.
+or uv, do:
+
+```
+$ poetry add --dev pyproject-pre-commit[ruff]
+```
+
+You can choose `ruff` or `black` as main linter/formatter by option.
+
+If you want to use `black`, do:
+
+```
+$ poetry add --dev pyproject-pre-commit[black]
+```
+
+For `black` case, `autoflake`, `autopep8`, `isort`, `flake8` and `bandit` are also installed.
+
+If you wish to install all, do:
+
+```
+$ poetry add --dev pyproject-pre-commit[all]
+```
 
 If you use pip, do:
 
 ```
-$ pip install pyproject-pre-commit
+$ pip install pyproject-pre-commit[ruff]
 ```
 
 This will install tools for pre-commit hooks in your working environment,
 so that you can use these tools, such as black, directly.
-
-### Install pyproject-pre-commit with ruff<a name="install-pyproject-pre-commit-with-ruff"></a>
-
-If you want to use ruff, you can install pyproject-pre-commit with ruff option.
-
-```
-$ poetry add --group dev "pyproject-pre-commit[ruff]"
-```
-
-```
-$ pip install pyproject-pre-commit[ruff]
-```
 
 ### Prepare .pre-commit-config.yaml<a name="prepare-pre-commit-configyaml"></a>
 
@@ -86,6 +92,8 @@ repos:
       - id: shellcheck
       - id: mdformat-check
       - id: mdformat
+      - id: actionlint
+      - id: validate-pyproject
 ```
 
 By using **pyproject-pre-commit**, you can simplify your **.pre-commit-config.yaml**
@@ -126,6 +134,8 @@ repos:
       - id: shellcheck
       - id: mdformat-check
       - id: mdformat
+      - id: actionlint
+      - id: validate-pyproject
 ```
 
 This can be made by `ppc` command:
@@ -202,6 +212,10 @@ There are ids for following tools:
       - [mdformat-gfm](https://github.com/hukkin/mdformat-gfm)
       - [mdformat-frontmatter](https://github.com/butler54/mdformat-frontmatter)
       - [mdformat-footnote](https://github.com/executablebooks/mdformat-footnote)
+- For GitHub Actions
+  - [actionlint](https://github.com/Mateusz-Grzelinski/actionlint-py): Lint GitHub workflows with actionlint.
+- For pyproject.toml
+  - [validate-pyproject](https://github.com/abravalheri/validate-pyproject): Validate pyproject.toml file.
 
 All tools are installed as dependencies of **pyproject-pre-commit** package.
 

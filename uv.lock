@@ -6,6 +6,12 @@ resolution-markers = [
 ]
 
 [[package]]
+name = "actionlint-py"
+version = "1.7.7.23"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/12/88/0c37fc8d91bd53c191c6299fcfe16dc76d31e5230c3aae7bf73956f9d65f/actionlint_py-1.7.7.23.tar.gz", hash = "sha256:698e2d35833bd9f80f527d129df8816ce9de07ff6bdec90fae178181de385f73", size = 11881 }
+
+[[package]]
 name = "alabaster"
 version = "0.7.16"
 source = { registry = "https://pypi.org/simple" }
@@ -1110,6 +1116,7 @@ name = "pyproject-pre-commit"
 version = "0.3.6"
 source = { editable = "." }
 dependencies = [
+    { name = "actionlint-py" },
     { name = "autoflake" },
     { name = "autopep8" },
     { name = "bandit", extra = ["toml"] },
@@ -1164,6 +1171,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "actionlint-py", specifier = ">=1.7.7.23" },
     { name = "autoflake", specifier = ">=2.2.1" },
     { name = "autopep8", specifier = ">=2.0.4" },
     { name = "bandit", extras = ["toml"], specifier = ">=1.7.5" },

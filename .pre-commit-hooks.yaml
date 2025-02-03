@@ -255,6 +255,15 @@
   language: system
   types: [markdown]
   require_serial: true
+- id: actionlint
+  # https://github.com/Mateusz-Grzelinski/actionlint-py
+  name: actionlint
+  description: Lint GitHub workflows with actionlint
+  entry: actionlint
+  language: system
+  types: [yaml]
+  files: "^.github/workflows/"
+  require_serial: true
 - id: validate-pyproject
   # https://github.com/abravalheri/validate-pyproject
   name: validate-pyproject

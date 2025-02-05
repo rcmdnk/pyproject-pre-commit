@@ -217,6 +217,18 @@
     - jupyter
   pass_filenames: false
   require_serial: true
+- id: dmypy
+  name: dmypy
+  description: Mypy daemon (mypy server)
+  entry: dmypy run
+  language: system
+  types_or:
+    - python
+    - pyi
+    - cython
+    - jupyter
+  pass_filenames: false
+  require_serial: true
 - id: numpydoc-validation
   # https://github.com/numpy/numpydoc
   name: numpydoc-validation

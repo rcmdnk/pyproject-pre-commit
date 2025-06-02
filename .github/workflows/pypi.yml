@@ -41,7 +41,7 @@ jobs:
           new_tag_no_v=${new_tag#v}
           sed -i"" "s/^version.*$/version = \"${new_tag_no_v}\"/" pyproject.toml
           if [ -n "$(git diff)" ];then
-            { echo "flag=1"; "lat_tag=${last_tag}"; "new_tag=${new_tag}"; } >> "$GITHUB_OUTPUT"
+            { echo "flag=1"; echo "last_tag=${last_tag}"; echo "new_tag=${new_tag}"; } >> "$GITHUB_OUTPUT"
           else
             echo "flag=0"  >> "$GITHUB_OUTPUT"
           fi

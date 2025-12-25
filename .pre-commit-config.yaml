@@ -196,12 +196,6 @@ repos:
         entry: mdformat
         language: system
         types: [markdown]
-      - id: actionlint
-        name: actionlint
-        entry: actionlint
-        language: system
-        types: [yaml]
-        files: "^.github/workflows/"
       - id: validate-pyproject
         name: validate-pyproject
         entry: validate-pyproject
@@ -210,7 +204,6 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
-      - id: check-byte-order-marker
       - id: check-yaml
       - id: check-json
       - id: check-toml
@@ -227,3 +220,9 @@ repos:
       - id: detect-aws-credentials
         args:
           - "--allow-missing-credentials"
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.8
+    hooks:
+      - id: actionlint
+        args:
+          - "-ignore=SC2129"  # allow individual redirects ({} >> file is not allowed in GitHub Actions' run)

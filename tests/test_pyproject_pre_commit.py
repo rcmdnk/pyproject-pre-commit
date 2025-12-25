@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import sys
 
 import pytest
@@ -6,7 +8,7 @@ from pyproject_pre_commit import __version__, main
 
 
 @pytest.mark.parametrize(
-    "argv, code, out",
+    ("argv", "code", "out"),
     [
         (
             ["ppc"],
@@ -20,7 +22,9 @@ from pyproject_pre_commit import __version__, main
         ),
     ],
 )
-def test_sys_exit(argv, code, out, capsys):
+def test_sys_exit(
+    argv: list[str], code: int, out: str | None, capsys: pytest.CaptureFixture
+) -> None:
     sys.argv = argv
     with pytest.raises(SystemExit) as test:
         main()
@@ -30,7 +34,7 @@ def test_sys_exit(argv, code, out, capsys):
     assert captured.out == out
 
 
-def test_pre_commit(capsys):
+def test_pre_commit(capsys: pytest.CaptureFixture) -> None:
     sys.argv = ["ppc", "--pre-commit"]
     main()
     captured = capsys.readouterr()
@@ -41,7 +45,7 @@ def test_pre_commit(capsys):
     assert f"v{__version__}" in captured.out
 
 
-def test_pyproject(capsys):
+def test_pyproject(capsys: pytest.CaptureFixture) -> None:
     sys.argv = ["ppc", "--pyproject"]
     main()
     captured = capsys.readouterr()

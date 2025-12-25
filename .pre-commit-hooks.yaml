@@ -229,6 +229,18 @@
     - jupyter
   pass_filenames: false
   require_serial: true
+- id: ty
+  name: ty
+  description: An extremely fast Python type checker and language server, written in Rust.
+  entry: ty check
+  language: system
+  types_or:
+    - python
+    - pyi
+    - cython
+    - jupyter
+  pass_filenames: false
+  require_serial: true
 - id: numpydoc-validation
   # https://github.com/numpy/numpydoc
   name: numpydoc-validation

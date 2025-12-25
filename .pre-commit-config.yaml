@@ -169,6 +169,14 @@ repos:
           - pyi
         require_serial: true
         pass_filenames: false
+      - id: ty
+        # https://github.com/astral-sh/ty
+        name: ty
+        entry: ty check
+        language: system
+        types_or:
+          - python
+          - pyi
       - id: numpydoc-validation
         # https://github.com/numpy/numpydoc
         name: numpydoc-validation

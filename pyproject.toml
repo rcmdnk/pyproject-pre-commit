@@ -179,6 +179,8 @@ scripts_are_modules = true
 install_types = true
 non_interactive = true
 
+[tool.ty.rules]
+
 [tool.numpydoc_validation]
 checks = [
     "all",   # report on all checks, except the below

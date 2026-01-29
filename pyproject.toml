@@ -129,7 +129,10 @@ ignore = [
 ]
 
 [tool.ruff.lint.per-file-ignores]
-"tests/**" = ["S101"]
+"tests/**" = [
+  "S101", # Use of `assert` detected
+  "PLR0913", # Too many arguments in function definition
+]
 
 [tool.ruff.lint.mccabe]
 max-complexity = 10

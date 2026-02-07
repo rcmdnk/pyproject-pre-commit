@@ -1,6 +1,6 @@
 [project]
 name = "pyproject-pre-commit"
-version = "0.5.2"
+version = "0.6.0"
 description = "pre-commit hooks for python projects using pyproject.toml."
 authors = [
   { name = "rcmdnk", email = "rcmdnk@gmail.com" }
@@ -19,11 +19,12 @@ classifiers = [
 ]
 requires-python = ">=3.9.0"
 dependencies = [
-    "pre-commit>=4.0.0",
-    "mypy>=1.5.1",
-    "numpydoc>=1.8.0",
+    "prek>=0.3.2",
+    "ruff>=0.15.0",
+    "ty>=0.0.15",
+    "numpydoc>=1.9.0",
     "shellcheck-py>=0.9.0.5",
-    "mdformat>=0.7.17",
+    "mdformat>=0.7.22",
     "mdformat-pyproject>=0.0.1",
     "mdformat-ruff>=0.1.3",
     "mdformat-beautysh>=0.1.1",
@@ -46,11 +47,11 @@ Homepage = "https://github.com/rcmdnk/pyproject-pre-commit"
 Issue = "https://github.com/rcmdnk/pyproject-pre-commit/issues"
 
 [project.optional-dependencies]
-ruff = [
-    "ruff>=0.7.2",
+pre-commit = [
+    "pre-commit>=4.3.0",
 ]
 black = [
-    "black>=24.3.0",
+    "black>=25.11.0",
     "blacken-docs>=1.16.0",
     "flake8-pyproject>=1.2.3",
     "flake8-annotations-complexity>=0.0.8",
@@ -68,11 +69,11 @@ black = [
     "pycodestyle>=2.11.0",
     "autoflake>=2.2.1",
     "autopep8>=2.0.4",
-    "isort>=5.12.0",
-    "bandit[toml]>=1.7.5",
+    "isort>=6.1.0",
+    "bandit[toml]>=1.8.0",
 ]
-ty = [
-    "ty>=0.0.7",
+mypy = [
+    "mypy>=1.19.1",
 ]
 
 [dependency-groups]
@@ -80,16 +81,15 @@ dev = [
     "pytest>=8.0.0",
     "pytest-cov>=6.0.0",
     "pytest-xdist>=3.3.1",
-    "mdformat-ruff>=0.1.3",
 ]
-ruff = [
-    "pyproject-pre-commit[ruff]",
+pre-commit = [
+    "pyproject-pre-commit[pre-commit]",
 ]
 black = [
     "pyproject-pre-commit[black]",
 ]
-ty = [
-    "pyproject-pre-commit[ty]",
+mypy = [
+    "pyproject-pre-commit[mypy]",
 ]
 
 [project.scripts]
@@ -100,7 +100,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.uv]
-default-groups = ["dev", "ruff", "black", "ty"]
+default-groups = ["dev", "pre-commit", "black", "mypy"]
 
 [tool.pytest.ini_options]
 addopts = "-n auto"
@@ -128,6 +128,8 @@ ignore = [
     "PLR2004", # Magic value used in comparison
 ]
 
+flake8-quotes.inline-quotes="single"
+
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = [
   "S101", # Use of `assert` detected
@@ -138,7 +140,7 @@ ignore = [
 max-complexity = 10
 
 [tool.ruff.format]
-# quote-style = "single"
+quote-style = "single"
 docstring-code-format = true
 
 [tool.black]
@@ -173,6 +175,8 @@ docstring-convention = "numpy"
 [tool.bandit]
 exclude_dirs = ["tests"]
 
+[tool.ty.rules]
+
 [tool.mypy]
 files = ["src/**/*.py"]
 strict = true
@@ -181,8 +185,6 @@ ignore_missing_imports = true
 scripts_are_modules = true
 install_types = true
 non_interactive = true
-
-[tool.ty.rules]
 
 [tool.numpydoc_validation]
 checks = [

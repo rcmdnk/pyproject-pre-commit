@@ -13,7 +13,6 @@ repos:
           - pyi
           - jupyter
         require_serial: true
-        minimum_pre_commit_version: "2.9.2"
         verbose: true
       - id: ruff-lint
         # https://github.com/astral-sh/ruff-pre-commit
@@ -26,7 +25,6 @@ repos:
           - pyi
           - jupyter
         require_serial: true
-        minimum_pre_commit_version: "2.9.2"
       - id: ruff-format-diff
         name: ruff-format-diff
         description: "Show diff of ruff for formatting"
@@ -37,7 +35,6 @@ repos:
           - pyi
           - jupyter
         require_serial: true
-        minimum_pre_commit_version: "2.9.2"
         verbose: true
       - id: ruff-format
         name: ruff-format
@@ -49,37 +46,36 @@ repos:
           - pyi
           - jupyter
         require_serial: true
-        minimum_pre_commit_version: "2.9.2"
-      - id: black-diff
-        name: black-diff
-        entry: black
-        language: system
-        types_or:
-          - python
-          - pyi
-        require_serial: true
-        args:
-          - "--diff"
-          - "--color"
-          - "--quiet"
-        verbose: true
-      - id: black
-        # https://github.com/psf/black-pre-commit-mirror
-        name: black
-        entry: black
-        language: system
-        types_or:
-          - python
-          - pyi
-        require_serial: true
-        args:
-          - "--quiet"
-      - id: blacken-docs
-        # https://github.com/asottile/blacken-docs
-        name: blacken-docs
-        entry: blacken-docs
-        language: system
-        files: '\.(rst|md|markdown|py|tex)$'
+      #- id: black-diff
+      #  name: black-diff
+      #  entry: black
+      #  language: system
+      #  types_or:
+      #    - python
+      #    - pyi
+      #  require_serial: true
+      #  args:
+      #    - "--diff"
+      #    - "--color"
+      #    - "--quiet"
+      #  verbose: true
+      #- id: black
+      #  # https://github.com/psf/black-pre-commit-mirror
+      #  name: black
+      #  entry: black
+      #  language: system
+      #  types_or:
+      #    - python
+      #    - pyi
+      #  require_serial: true
+      #  args:
+      #    - "--quiet"
+      #- id: blacken-docs
+      #  # https://github.com/asottile/blacken-docs
+      #  name: blacken-docs
+      #  entry: blacken-docs
+      #  language: system
+      #  files: '\.(rst|md|markdown|py|tex)$'
       - id: autoflake-diff
         name: autoflake-diff
         entry: autoflake

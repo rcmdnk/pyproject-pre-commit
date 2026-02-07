@@ -4,6 +4,7 @@
 [![test coverage](https://img.shields.io/badge/coverage-check%20here-blue.svg)](https://github.com/rcmdnk/pyproject-pre-commit/tree/coverage)
 
 [pre-commit](https://pre-commit.com/) hooks for python projects.
+[prek](https://github.com/j178/prek) also works as well (current default depends on prek).
 
 **.pre-commit-hooks.yaml** provides pre-defined ids which you just need to add these ids to your **.pre-commit-config.yaml**.
 
@@ -15,8 +16,9 @@ all necessary tools are installed as dependencies.
 - [Requirement](#requirement)
 - [Usage](#usage)
   - [Install pyproject-pre-commit](#install-pyproject-pre-commit)
+  - [Optional dependencies](#optional-dependencies)
   - [Prepare .pre-commit-config.yaml](#prepare-pre-commit-configyaml)
-  - [Run pre-commit](#run-pre-commit)
+  - [Run prek/pre-commit](#run-prekpre-commit)
 - [Available ids](#available-ids)
 - [Options for tools](#options-for-tools)
 - [pyproject.toml](#pyprojecttoml)
@@ -31,42 +33,73 @@ all necessary tools are installed as dependencies.
 
 ### Install pyproject-pre-commit<a name="install-pyproject-pre-commit"></a>
 
-If your project uses poetry, do:
+Using uv:
 
-```
-$ poetry add --group dev pyproject-pre-commit[ruff]
-```
-
-or uv, do:
-
-```
-$ poetry add --dev pyproject-pre-commit[ruff]
+```bash
+$ uv add --group dev pyproject-pre-commit
 ```
 
-You can choose `ruff` or `black` as main linter/formatter by option.
+Using poetry:
 
-If you want to use `black`, do:
-
-```
-$ poetry add --dev pyproject-pre-commit[black]
+```bash
+$ poetry add --dev pyproject-pre-commit
 ```
 
-For `black` case, `autoflake`, `autopep8`, `isort`, `flake8` and `bandit` are also installed.
+Using pip:
+
+```bash
+$ pip install pyproject-pre-commit
+```
+
+This will install **pyproject-pre-commit** and
+
+```
+    "prek>=0.3.2",
+    "ruff>=0.15.0",
+    "ty>=0.0.15",
+    "numpydoc>=1.11.0",
+    "shellcheck-py>=0.9.0.5",
+    "mdformat>=0.7.22",
+    "mdformat-pyproject>=0.0.1",
+    "mdformat-ruff>=0.1.3",
+    "mdformat-beautysh>=0.1.1",
+    "mdformat-config>=0.2.1",
+    "mdformat-gofmt>=0.0.2",
+    "mdformat-rustfmt>=0.0.3",
+    "mdformat-footnote>=0.1.1",
+    "mdformat-frontmatter>=2.0.1",
+    "mdformat-gfm>=0.3.5",
+    "mdformat-tables>=1.0.0",
+    "mdformat-web>=0.2.0",
+    "mdformat-toc>=0.3.0",
+    "validate-pyproject[all]>=0.22",
+```
+
+### Optional dependencies<a name="optional-dependencies"></a>
+
+if you want to install `pre-commit`, do:
+
+```
+$ uv add --dev pyproject-pre-commit[pre-commit]
+```
+
+If you want to use `black`/`autoflake`/`autopep8`/`flake8`/`isort`/`bandit` for linting/formatting, do:
+
+```
+$ uv add --dev pyproject-pre-commit[black]
+```
+
+If you need `mypy`, do:
+
+```
+$ uv add --dev pyproject-pre-commit[mypy]
+```
 
 If you wish to install all, do:
 
 ```
-$ poetry add --dev pyproject-pre-commit[all]
+$ uv add --dev pyproject-pre-commit[all]
 ```
-
-If you use pip, do:
-
-```
-$ pip install pyproject-pre-commit[ruff]
-```
-
-This will install tools for pre-commit hooks in your working environment,
-so that you can use these tools, such as black, directly.
 
 ### Prepare .pre-commit-config.yaml<a name="prepare-pre-commit-configyaml"></a>
 
@@ -75,20 +108,14 @@ Add **https://github.com/rcmdnk/pyproject-pre-commit** to your **.pre-commit-con
 ```yaml
 repos:
   - repo: https://github.com/rcmdnk/pyproject-pre-commit
-    rev: v0.3.0
+    rev: v0.6.0
     hooks:
-      - id: black-diff
-      - id: black
-      - id: blacken-docs
-      - id: autoflake-diff
-      - id: autoflake
-      - id: autopep8-diff
-      - id: autopep8
-      - id: isort-diff
-      - id: isort
-      - id: flake8
-      - id: bandit
-      - id: mypy
+      - id: ruff-lint-diff
+      - id: ruff-lint
+      - id: ruff-format-diff
+      - id: ruff-format
+      - id: ty
+      - id: numpydoc-validation
       - id: shellcheck
       - id: mdformat-check
       - id: mdformat
@@ -105,7 +132,7 @@ tools installed in your working environment.
 This can be made by `ppc` command:
 
 ```
-$ ppc --pre-commit > .pre-commit-config.yaml
+$ ppc pre-commit > .pre-commit-config.yaml
 ```
 
 > [!NOTE]
@@ -119,18 +146,26 @@ $ ppc --pre-commit |grep -v "^repos:" >> .pre-commit-config.yaml
 
 You may want to modify after adding these configurations.
 
-To use `ruff` instead of such as `black`, `flake8`, `isort`, add following hooks:
+To use `black`, `flake8`, `isort` and `mypy`, instead of `ruff`/`ty`, add following hooks:
 
 ```yaml
 repos:
   - repo: https://github.com/rcmdnk/pyproject-pre-commit
-    rev: v0.3.0
+    rev: v0.6.0
     hooks:
-      - id: ruff-lint-diff
-      - id: ruff-lint
-      - id: ruff-format-diff
-      - id: ruff-format
+      - id: black-diff
+      - id: black
+      - id: blacken-docs
+      - id: autoflake-diff
+      - id: autoflake
+      - id: autopep8-diff
+      - id: autopep8
+      - id: isort-diff
+      - id: isort
+      - id: flake8
+      - id: bandit
       - id: mypy
+      - id: numpydoc-validation
       - id: shellcheck
       - id: mdformat-check
       - id: mdformat
@@ -141,29 +176,31 @@ repos:
 This can be made by `ppc` command:
 
 ```
-$ ppc --pre-commit --ruff > .pre-commit-config.yaml
+$ ppc pre-commit --black --mypy > .pre-commit-config.yaml
 ```
 
-### Run pre-commit<a name="run-pre-commit"></a>
+### Run prek/pre-commit<a name="run-prekpre-commit"></a>
 
-`pre-commit` command is installed as dependencies of **pyproject-pre-commit** package.
+`prek` command is installed as dependencies of **pyproject-pre-commit** package.
 
-After installing **pyproject-pre-commit** package, you can run `pre-commit` command.
+After installing **pyproject-pre-commit** package, you can run `prek` command.
 
 First, install pre-commit hooks by:
 
 ```
-$ pre-commit install
+$ prek install
 ```
 
 then you can run pre-commit by:
 
 ```
-$ pre-commit run --all-files
+$ prek run -a
 ```
 
 > [!NOTE]
-> If you are using poetry, run `poetry run pre-commit ... ` or run after `poetry shell`.
+> If you are using uv, run `uv run pre-commit ... `
+
+If you want to use `pre-commit` command, install `pyproject-pre-commit[pre-commit]` and use `pre-commit` command.
 
 ## Available ids<a name="available-ids"></a>
 
@@ -172,6 +209,10 @@ You can find ids in **.pre-commit-hooks.yaml**.
 There are ids for following tools:
 
 - For Python
+  - [ruff-lint-diff](https://docs.astral.sh/ruff/): Just show ruff check result.
+  - [ruff-lint](https://docs.astral.sh/ruff/): Fix by ruff for lint.
+  - [ruff-format-diff](https://docs.astral.sh/ruff/): Just show ruff format result.
+  - [ruff-format](https://docs.astral.sh/ruff/): Format by ruff.
   - [black-diff](https://black.readthedocs.io/en/stable): Just show Black result.
   - [black](https://black.readthedocs.io/en/stable): Black: The uncompromising Python code formatter.
   - [blacken-docs](https://github.com/adamchainz/blacken-docs): Run `black` on python code blocks in documentation files.
@@ -198,11 +239,8 @@ There are ids for following tools:
       - [pep8-naming](https://github.com/PyCQA/pep8-naming)
       - [pycodestyle](https://pycodestyle.pycqa.org/en/latest/)
   - [bandit](https://github.com/PyCQA/bandit): Bandit is a tool for finding common security issues in Python code.
+  - [ty](https://docs.astral.sh/ty/): An extremely fast Python type checker and language server, written in Rust.
   - [mypy](https://www.mypy-lang.org/): Mypy is a static type checker for Python.
-  - [ruff-lint-diff](https://docs.astral.sh/ruff/): Just show ruff check result.
-  - [ruff-lint](https://docs.astral.sh/ruff/): Fix by ruff for lint.
-  - [ruff-format-diff](https://docs.astral.sh/ruff/): Just show ruff format result.
-  - [ruff-format](https://docs.astral.sh/ruff/): Format by ruff.
 - For Shell script
   - [shellcheck](https://www.shellcheck.net/): ShellCheck - A shell script static analysis tool
 - For Markdown
@@ -248,7 +286,7 @@ $ ppc --pyproject >> pyproject.toml
 or
 
 ```
-$ ppc --pyproject --ruff >> pyproject.toml
+$ ppc --pyproject --black --mypy >> pyproject.toml
 ```
 
 You may want to modify after adding these configurations.

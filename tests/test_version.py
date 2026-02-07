@@ -8,6 +8,6 @@ def test_version() -> None:
         import tomllib  # ty: ignore[unresolved-import]
     except ModuleNotFoundError:
         import tomli as tomllib  # ty: ignore[unresolved-import]
-    with (Path(__file__).parents[1] / "pyproject.toml").open("rb") as f:
-        version = tomllib.load(f)["project"]["version"]
+    with (Path(__file__).parents[1] / 'pyproject.toml').open('rb') as f:
+        version = tomllib.load(f)['project']['version']
     assert version == __version__

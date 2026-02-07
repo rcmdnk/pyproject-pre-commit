@@ -8,17 +8,17 @@ from pyproject_pre_commit import __version__, main
 
 
 @pytest.mark.parametrize(
-    ("argv", "code", "out"),
+    ('argv', 'code', 'out'),
     [
         (
-            ["ppc"],
+            ['ppc'],
             0,
-            "Usage: ppc <--pre-commit | --pyproject> [--ruff] [--black]\n",
+            'Usage: ppc <--pre-commit | --pyproject> [--ruff] [--black]\n',
         ),
         (
-            ["ppc", "--wrong"],
+            ['ppc', '--wrong'],
             1,
-            "Usage: ppc <--pre-commit | --pyproject> [--ruff] [--black]\n",
+            'Usage: ppc <--pre-commit | --pyproject> [--ruff] [--black]\n',
         ),
     ],
 )
@@ -35,18 +35,18 @@ def test_sys_exit(
 
 
 def test_pre_commit(capsys: pytest.CaptureFixture) -> None:
-    sys.argv = ["ppc", "--pre-commit"]
+    sys.argv = ['ppc', '--pre-commit']
     main()
     captured = capsys.readouterr()
-    assert captured.out.startswith("repos:\n")
+    assert captured.out.startswith('repos:\n')
     assert (
-        "repo: https://github.com/rcmdnk/pyproject-pre-commit" in captured.out
+        'repo: https://github.com/rcmdnk/pyproject-pre-commit' in captured.out
     )
-    assert f"v{__version__}" in captured.out
+    assert f'v{__version__}' in captured.out
 
 
 def test_pyproject(capsys: pytest.CaptureFixture) -> None:
-    sys.argv = ["ppc", "--pyproject"]
+    sys.argv = ['ppc', '--pyproject']
     main()
     captured = capsys.readouterr()
-    assert captured.out.startswith("[tool.black]\n")
+    assert captured.out.startswith('[tool.black]\n')

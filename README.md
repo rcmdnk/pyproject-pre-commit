@@ -208,7 +208,7 @@ You can find ids in **.pre-commit-hooks.yaml**.
 
 There are ids for following tools:
 
-- For Python
+- For Python linting/formatting
   - [ruff-lint-diff](https://docs.astral.sh/ruff/): Just show ruff check result.
   - [ruff-lint](https://docs.astral.sh/ruff/): Fix by ruff for lint.
   - [ruff-format-diff](https://docs.astral.sh/ruff/): Just show ruff format result.
@@ -239,6 +239,7 @@ There are ids for following tools:
       - [pep8-naming](https://github.com/PyCQA/pep8-naming)
       - [pycodestyle](https://pycodestyle.pycqa.org/en/latest/)
   - [bandit](https://github.com/PyCQA/bandit): Bandit is a tool for finding common security issues in Python code.
+- For Python type checking
   - [ty](https://docs.astral.sh/ty/): An extremely fast Python type checker and language server, written in Rust.
   - [mypy](https://www.mypy-lang.org/): Mypy is a static type checker for Python.
 - For Shell script

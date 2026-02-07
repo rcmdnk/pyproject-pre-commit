@@ -13,12 +13,12 @@ from pyproject_pre_commit import __version__, main
         (
             ['ppc'],
             0,
-            'Usage: ppc <--pre-commit | --pyproject> [--ruff] [--black]\n',
+            'Usage: ppc <pre-commit | pyproject> [--black] [--mypy]\n',
         ),
         (
             ['ppc', '--wrong'],
             1,
-            'Usage: ppc <--pre-commit | --pyproject> [--ruff] [--black]\n',
+            'Usage: ppc <pre-commit | pyproject> [--black] [--mypy]\n',
         ),
     ],
 )
@@ -35,7 +35,7 @@ def test_sys_exit(
 
 
 def test_pre_commit(capsys: pytest.CaptureFixture) -> None:
-    sys.argv = ['ppc', '--pre-commit']
+    sys.argv = ['ppc', 'pre-commit']
     main()
     captured = capsys.readouterr()
     assert captured.out.startswith('repos:\n')
@@ -46,7 +46,7 @@ def test_pre_commit(capsys: pytest.CaptureFixture) -> None:
 
 
 def test_pyproject(capsys: pytest.CaptureFixture) -> None:
-    sys.argv = ['ppc', '--pyproject']
+    sys.argv = ['ppc', 'pyproject']
     main()
     captured = capsys.readouterr()
-    assert captured.out.startswith('[tool.black]\n')
+    assert captured.out.startswith('[tool.ruff]\n')

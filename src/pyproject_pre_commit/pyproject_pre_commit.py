@@ -19,8 +19,7 @@ def pre_commit(is_black: bool, is_mypy: bool) -> None:
       - id: isort-diff
       - id: isort
       - id: flake8
-      - id: bandit
-""")  # noqa: T201
+      - id: bandit""")  # noqa: T201
     else:
         print(f"""repos:
   - repo: https://github.com/rcmdnk/pyproject-pre-commit
@@ -29,23 +28,52 @@ def pre_commit(is_black: bool, is_mypy: bool) -> None:
       - id: ruff-lint-diff
       - id: ruff-lint
       - id: ruff-format-diff
-      - id: ruff-format
-""")  # noqa: T201
+      - id: ruff-format""")  # noqa: T201
     if is_mypy:
-        print("""      - id: mypy
-""")  # noqa: T201
+        print("""      - id: mypy""")  # noqa: T201
     else:
-        print("""      - id: ty
-""")  # noqa: T201
+        print("""      - id: ty""")  # noqa: T201
     print("""      - id: numpydoc-validation
       - id: shellcheck
       - id: mdformat-check
-      - id: mdformat
-""")  # noqa: T201
+      - id: mdformat""")  # noqa: T201
 
 
 def pyproject(is_black: bool, is_mypy: bool) -> None:
     if is_black:
+        print("""[tool.black]
+line-length = 79
+
+[tool.autoflake]
+remove-all-unused-imports = true
+expand-star-imports = true
+remove-duplicate-keys = true
+remove-unused-variables = true
+
+[tool.autopep8]
+ignore = "E203,E501,W503"
+recursive = true
+aggressive = 3
+
+[tool.isort]
+profile = "black"
+line_length = 79
+
+[tool.flake8]
+# E203 is not PEP8 compliant and black insert space around slice: [Frequently Asked Questions - Black 22.12.0 documentation](https://black.readthedocs.io/en/stable/faq.html#why-are-flake8-s-e203-and-w503-violated)
+# E501: Line too long. Disable it to allow long lines of comments and print lines which black allows.
+# E704: multiple statements on one line (def). This is inconsistent with black >= 24.1.1 (see ttps://github.com/psf/black/pull/3796)
+# W503 is the counter part of W504, which follows current PEP8: [Line break occurred before a binary operator (W503)](https://www.flake8rules.com/rules/W503.html)
+# D100~D106: Missing docstrings other than class (D101)
+# D401: First line should be in imperative mood
+ignore = "E203,E501,E704,W503,D100,D102,D103,D104,D105,D106,D401"
+max-complexity = 10
+docstring-convention = "numpy"
+
+[tool.bandit]
+exclude_dirs = ["tests"]
+""")  # noqa: T201
+    else:
         print("""[tool.ruff]
 line-length = 79
 
@@ -80,42 +108,6 @@ max-complexity = 10
 [tool.ruff.format]
 quote-style = "single"
 docstring-code-format = true
-
-
-""")  # noqa: T201
-    else:
-        print("""[tool.black]
-line-length = 79
-
-[tool.autoflake]
-remove-all-unused-imports = true
-expand-star-imports = true
-remove-duplicate-keys = true
-remove-unused-variables = true
-
-[tool.autopep8]
-ignore = "E203,E501,W503"
-recursive = true
-aggressive = 3
-
-[tool.isort]
-profile = "black"
-line_length = 79
-
-[tool.flake8]
-# E203 is not PEP8 compliant and black insert space around slice: [Frequently Asked Questions - Black 22.12.0 documentation](https://black.readthedocs.io/en/stable/faq.html#why-are-flake8-s-e203-and-w503-violated)
-# E501: Line too long. Disable it to allow long lines of comments and print lines which black allows.
-# E704: multiple statements on one line (def). This is inconsistent with black >= 24.1.1 (see ttps://github.com/psf/black/pull/3796)
-# W503 is the counter part of W504, which follows current PEP8: [Line break occurred before a binary operator (W503)](https://www.flake8rules.com/rules/W503.html)
-# D100~D106: Missing docstrings other than class (D101)
-# D401: First line should be in imperative mood
-ignore = "E203,E501,E704,W503,D100,D102,D103,D104,D105,D106,D401"
-max-complexity = 10
-docstring-convention = "numpy"
-
-[tool.bandit]
-exclude_dirs = ["tests"]
-
 """)  # noqa: T201
     if is_mypy:
         print("""[tool.mypy]
@@ -126,7 +118,6 @@ ignore_missing_imports = true
 scripts_are_modules = true
 install_types = true
 non_interactive = true
-
 """)  # noqa: T201
     else:
         print("""[tool.ty.tules]
